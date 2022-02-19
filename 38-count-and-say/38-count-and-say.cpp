@@ -2,7 +2,6 @@ class Solution {
 public:
     string countAndSay(int n) {
         string num = "1";
-        
         while(n-->1){
             string current = num+" ";
             char prev = current[0];

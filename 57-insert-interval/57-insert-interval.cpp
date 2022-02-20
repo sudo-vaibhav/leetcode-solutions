@@ -69,14 +69,12 @@ public:
             }
         }
         
-        // now starting from exceed pos to end-1 , shift all elements to right
-        // if(ans.size())
-        // cout<<"size:"<<ans.size()<<endl;
-        // cout<<"exceed pos:"<<exceed_pos<<endl;
+        // now starting from end to exceed pos , shift all elements to right
         for(int i = ans.size()-1;i>exceed_pos;--i){
             ans[i] = ans[i-1];
         }
-//         // finally put goal interval in its place
+        
+        // finally put goal interval in its place
         ans[exceed_pos] = goalInterval;
         
         return ans;

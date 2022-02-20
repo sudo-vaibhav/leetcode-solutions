@@ -51,6 +51,7 @@ public:
                 ans.push_back(i);
             }
             else if(i[0]>newInterval[1]){
+                // if not inserted goalInterval yet, then insert
                 if(!done){
                     done = true;
                     ans.push_back(goalInterval);
@@ -62,6 +63,7 @@ public:
                 goalInterval[1] = max(i[1],goalInterval[1]);
             }
         }
+        
         if(!done) ans.push_back(goalInterval);
         return ans;
     }

@@ -3,10 +3,6 @@ public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         
         vector<int> goalInterval = newInterval;
-        
-        
-           
-       
         vector<vector<int>> ans;
         
         for(auto i:intervals){

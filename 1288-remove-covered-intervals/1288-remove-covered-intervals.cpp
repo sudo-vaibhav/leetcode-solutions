@@ -1,7 +1,4 @@
-// struct comp{
-
-//     bool operator()
-// };
+// O(nlogn) complexity
 class Solution {
 public:
     int removeCoveredIntervals(vector<vector<int>>& intervals) {

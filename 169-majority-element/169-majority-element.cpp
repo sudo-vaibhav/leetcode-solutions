@@ -3,8 +3,9 @@ public:
     int majorityElement(vector<int>& nums) {
         int candidate;
         unsigned short count=0;
+        
         for(int i=0;i<nums.size();i++){
-            if(count==0){
+            if(!count){
                 candidate = nums[i];
             }
             if(candidate == nums[i]) count++;

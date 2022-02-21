@@ -4,19 +4,20 @@ public:
     
     // [[5,10],[2,5],[4,7],[3,9]]                           10
     int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
-            // the number of units , give me descending order
+            // the number of units , give me descending order by unit count
         
+        // lambda custom comparator
         auto comp = [](pair<int,int> p1, pair<int,int> p2){
             return p1.first < p2.first;
         };
-        priority_queue<pair<int,int>, vector<pair<int, int>>, decltype(comp)> pq(comp); // max heap by default 
+        
+        // pq
+        priority_queue<pair<int,int>, vector<pair<int, int>>, decltype(comp)> pq(comp); 
         // first -> unit count , second -> frequency/count 
         
         for(auto boxType:boxTypes){
                         // 5
-            // for(int i=0;i<boxType[0];i++){
-            pq.push({boxType[1],boxType[0]}); // 10,10,10,10,10
-            // }
+            pq.push({boxType[1],boxType[0]}); // <10,5>
         }
         
         int units  = 0;  // will have our units added on truck so far

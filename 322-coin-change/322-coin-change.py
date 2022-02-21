@@ -12,7 +12,6 @@ class Solution:
         
         if(res1==-1):
             return res2
-
         
         if(res2 == -1):
             return 1+res1

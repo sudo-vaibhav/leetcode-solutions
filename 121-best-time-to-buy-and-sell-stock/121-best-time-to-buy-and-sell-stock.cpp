@@ -23,16 +23,11 @@
 class Solution{
     public:
         int maxProfit(vector<int>& prices){
-            long n = prices.size();
-            long minPrice = INT_MAX;
-            long maxProfit = 0;
-            for(int i=0;i<n;i++){
-                if(prices[i]<minPrice){
-                    minPrice = prices[i];
-                }
-                if(prices[i]-minPrice>maxProfit){
-                    maxProfit = prices[i]-minPrice;
-                }
+            int minPrice = INT_MAX;
+            int maxProfit = 0;
+            for(auto price:prices){
+                minPrice = min(minPrice,price);
+                maxProfit = max(maxProfit,price-minPrice);
             }
             return maxProfit;
         }

@@ -43,7 +43,7 @@ class Solution{
             int r2 = toTakeFromNums2==n ? INT_MAX: nums2[toTakeFromNums2];
             int rightMin = min(r1,r2);
             
-            cout<<"fromn1: "<<toTakeFromNums1<<" fromn2: "<<toTakeFromNums2<<" leftMax:"<<leftMax<<" rightMin:"<<rightMin<<endl;
+//             cout<<"fromn1: "<<toTakeFromNums1<<" fromn2: "<<toTakeFromNums2<<" leftMax:"<<leftMax<<" rightMin:"<<rightMin<<endl;
             if(leftMax<=rightMin){
                 if(N%2==1){
                     return leftMax;

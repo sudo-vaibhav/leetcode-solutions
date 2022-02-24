@@ -11,7 +11,7 @@ public:
         
         for(int i=2;i<sqrt(n)+1;i++){
             if(cache[i]){
-                for(int j=i*2;j<n;j+=i){
+                for(int j=i*i;j<n;j+=i){
                     if(cache[j]){
                         cache[j] = 0; 
                         c--;

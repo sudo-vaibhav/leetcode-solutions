@@ -1,6 +1,6 @@
 class Solution {
 public:
-    unordered_map<int,bool> rowMap, upperDiagMap, lowerDiagMap;
+    unordered_set<int> rowMap, upperDiagMap, lowerDiagMap;
     vector<string> convert(vector<vector<bool>>& matrix){
         vector<string> res;
         for(auto row:matrix){
@@ -21,9 +21,9 @@ public:
         for(int row = 0;row<n;row++){
             if(check(row,col)){
                 matrix[row][col] = 1;
-                rowMap[row]=true; 
-                upperDiagMap[col-row]=true;
-                lowerDiagMap[col+row]=true;
+                rowMap.insert(row); 
+                upperDiagMap.insert(col-row);
+                lowerDiagMap.insert(col+row);
                 if(col==n-1){
                     ans.push_back(convert(matrix));
                 }else{

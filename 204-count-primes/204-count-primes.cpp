@@ -4,7 +4,7 @@ public:
         if(n<=2){
             return 0;
         }
-        vector<int> cache(n,1);
+        vector<bool> cache(n,1);
         cache[0]=0;
         cache[1]=0;
         int c = n-2;

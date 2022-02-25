@@ -54,7 +54,7 @@ class Solution {
 public:
    
     
-    int getNextBlock(string version, int& idx, int N){
+    int getNextBlock(string& version,unsigned short& idx, unsigned short N){
         int num = 0;
         if(idx==N) return 0;
         for(;idx<N;idx++){
@@ -70,11 +70,10 @@ public:
         return num;
     }
     int compareVersion(string version1, string version2){
-        int i=0,j=0,n=version1.size(),m = version2.size();
+        unsigned short i=0,j=0,n=version1.size(),m = version2.size();
         while(i<n||j<m){
             auto num1 = getNextBlock(version1,i,n);
             auto num2 = getNextBlock(version2,j,m);
-            cout<<num1<<" "<<num2<<endl;
             if(num1<num2) return -1;
             else if(num1>num2) return 1;
         }

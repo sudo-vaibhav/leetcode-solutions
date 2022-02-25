@@ -51,10 +51,8 @@
 
 // generator pattern, O(1) space
 class Solution {
-public:
-   
-    
-    int getNextBlock(string& version,unsigned short& idx, unsigned short N){
+public:    
+    int getNextBlock(string& version,int& idx,int& N){
         int num = 0;
         if(idx==N) return 0;
         for(;idx<N;idx++){
@@ -70,7 +68,7 @@ public:
         return num;
     }
     int compareVersion(string version1, string version2){
-        unsigned short i=0,j=0,n=version1.size(),m = version2.size();
+        int i=0,j=0,n=version1.size(),m = version2.size();
         while(i<n||j<m){
             auto num1 = getNextBlock(version1,i,n);
             auto num2 = getNextBlock(version2,j,m);

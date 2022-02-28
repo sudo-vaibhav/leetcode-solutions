@@ -8,13 +8,13 @@ public:
                 ans *=b; 
             }
             else{
-                cout<<"this runs"<<endl;
+                // cout<<"this runs"<<endl;
                 zCount++;
             }
-            cout<<a<<" "<<b<<endl;
+            // cout<<a<<" "<<b<<endl;
             return ans;
         });
-        cout<<"zCount"<<zCount<<endl;
+        // cout<<"zCount"<<zCount<<endl;
         vector<int> ans;
         for(int i=0;i<nums.size();i++){
             if(zCount>1){
@@ -25,7 +25,7 @@ public:
             }
             else{
                 if(nums[i]!=0)
-                ans.push_back(prod/nums[i]);
+                ans.push_back(prod*pow(nums[i],-1));
             }
         }
         

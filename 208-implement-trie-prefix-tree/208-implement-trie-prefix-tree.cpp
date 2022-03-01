@@ -3,7 +3,6 @@ public:
     Trie* children[26];
     bool isTerminal;
     Trie() {
-        // children = {NULL};
         for(auto i=0;i<26;i++) children[i]=NULL;
         isTerminal = false;
     }
@@ -53,11 +52,3 @@ public:
         
     }
 };
-
-/**
- * Your Trie object will be instantiated and called as such:
- * Trie* obj = new Trie();
- * obj->insert(word);
- * bool param_2 = obj->search(word);
- * bool param_3 = obj->startsWith(prefix);
- */

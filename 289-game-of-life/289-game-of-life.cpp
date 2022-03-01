@@ -1,10 +1,8 @@
 class Solution {
 public:
-    void populate(int i, int j, vector<vector<int>>& board){
+    void populate(int& i, int& j, int& n, int& m, vector<vector<int>>& board){
         int temp = board[i][j];
         int ans = 0;
-        int n = board.size();
-        int m = board[0].size();
         for(int r = -1;r<2;r++){
             for(int c=-1;c<2;c++){
                 
@@ -18,7 +16,6 @@ public:
                 }
             }
         }
-        // cout<<i<<" "<<j<<" "<<ans<<endl;
         if(temp==0){
             ans*=-1;
         }
@@ -34,7 +31,7 @@ public:
         board[i][j] = ans;
     }
     
-    void transition(int i, int j, vector<vector<int>>& board){
+    void transition(int& i, int& j,int& n, int& m, vector<vector<int>>& board){
         // if live
         int val = board[i][j];
         int neighbors = abs(val);
@@ -60,16 +57,16 @@ public:
     }
     
     void gameOfLife(vector<vector<int>>& board) {
-        for(auto i=0;i<board.size();i++){
-            for(auto j=0;j<board[i].size();j++){
-                populate(i,j,board);
-                 cout<<board[i][j]<<"\t";
+        int n = board.size();  
+        int m = board[0].size();
+        for(auto i=0;i<n;i++){
+            for(auto j=0;j<m;j++){
+                populate(i,j,n,m,board);
             }
-            cout<<endl;
         }
-        for(auto i=0;i<board.size();i++){
-            for(auto j=0;j<board[i].size();j++){
-                transition(i,j,board);
+        for(auto i=0;i<n;i++){
+            for(auto j=0;j<m;j++){
+                transition(i,j,n,m,board);
             }
         }
     }

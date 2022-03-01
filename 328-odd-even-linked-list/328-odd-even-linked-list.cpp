@@ -23,9 +23,8 @@ public:
         
         while(ptr&&ptr2){
             ptr->next = ptr2->next;
-            if(ptr->next)
-            ptr2->next = ptr->next->next;
             if(ptr->next){
+                ptr2->next = ptr->next->next;
                 ptr = ptr->next;
             }
             ptr2 = ptr2->next;

@@ -1,9 +1,10 @@
 class Trie {
 public:
-    vector<Trie*> children;
+    Trie* children[26];
     bool isTerminal;
     Trie() {
-        children = vector<Trie*>(26,NULL); 
+        // children = {NULL};
+        for(auto i=0;i<26;i++) children[i]=NULL;
         isTerminal = false;
     }
     

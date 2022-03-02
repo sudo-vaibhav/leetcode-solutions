@@ -12,10 +12,8 @@ class Solution:
         #         return solve(sIdx,tIdx+1,s,t)
         # return solve(0,0,s,t)
         sIdx,tIdx = 0,0
-        while True:
-            if(sIdx==len(s)): return True
-            if(tIdx==len(t)): return False
+        while sIdx<len(s) and tIdx<len(t):
             sIdx+=(s[sIdx]==t[tIdx])
             tIdx+=1
-            
+        return sIdx==len(s) 
             

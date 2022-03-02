@@ -2,8 +2,10 @@ class Solution {
 public:
     // bfs like
     pair<bool, int> solve(
-        vector<vector<unsigned int>>& adj,vector<bool>& hasApple,
-        unsigned int curNode, unsigned int prev
+        const vector<vector<unsigned int>>& adj,
+        const vector<bool>& hasApple,
+        const unsigned int curNode,
+        const unsigned int prev
     )
     {
         bool foundApple = false;

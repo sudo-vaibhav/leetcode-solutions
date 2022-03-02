@@ -11,9 +11,7 @@ class Solution:
         #     else:
         #         return solve(sIdx,tIdx+1,s,t)
         # return solve(0,0,s,t)
-        sIdx = 0
-        tIdx = 0
-        
+        sIdx,tIdx = 0,0
         while True:
             if(sIdx==len(s)): return True
             if(tIdx==len(t)): return False

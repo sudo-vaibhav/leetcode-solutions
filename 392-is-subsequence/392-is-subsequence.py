@@ -1,6 +1,4 @@
-class Solution:
-    def isSubsequence(self, s: str, t: str) -> bool:
-        # Recursive Solution         
+ # Recursive Solution         
         # def solve(sIdx, tIdx, s, t):
         #     if(sIdx==len(s)): return True
         #     if(tIdx==len(t)): return False
@@ -11,9 +9,13 @@ class Solution:
         #     else:
         #         return solve(sIdx,tIdx+1,s,t)
         # return solve(0,0,s,t)
-        sIdx,tIdx = 0,0
-        while sIdx<len(s) and tIdx<len(t):
+        
+        
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        sIdx,tIdx,S,T = 0,0,len(s),len(t)
+        while sIdx<S and tIdx<T:
             sIdx+=(s[sIdx]==t[tIdx])
             tIdx+=1
-        return sIdx==len(s) 
+        return sIdx==S 
             

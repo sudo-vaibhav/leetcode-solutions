@@ -2,12 +2,12 @@ class Solution {
 public:
     // bfs like
     pair<bool, int> solve(
-        vector<vector<int>>& adj,vector<bool>& hasApple,
-        int curNode, int prev
+        vector<vector<unsigned int>>& adj,vector<bool>& hasApple,
+        unsigned int curNode, unsigned int prev
     )
     {
         bool foundApple = false;
-        int total =0;
+        unsigned int total =0;
         if(hasApple[curNode]){
             foundApple = true;
         }
@@ -24,7 +24,7 @@ public:
     }
     
     int minTime(int n, vector<vector<int>>& edges, vector<bool>& hasApple) {
-        vector<vector<int>> adj(n);
+        vector<vector<unsigned int>> adj(n);
         for(auto const &edge:edges){
             adj[edge[0]].push_back(edge[1]);
             adj[edge[1]].push_back(edge[0]);

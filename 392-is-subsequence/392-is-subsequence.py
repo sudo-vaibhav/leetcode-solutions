@@ -17,8 +17,6 @@ class Solution:
         while True:
             if(sIdx==len(s)): return True
             if(tIdx==len(t)): return False
-            sVal = s[sIdx]
-            tVal = t[tIdx]
-            # if(tVal==sVal):
+            sVal,tVal = s[sIdx],t[tIdx]
             sIdx+=(tVal==sVal)
             tIdx+=1

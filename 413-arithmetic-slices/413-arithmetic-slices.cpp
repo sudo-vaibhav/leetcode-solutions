@@ -1,13 +1,12 @@
 class Solution {
 public:
     int getCounts(int simCount){
-        const auto numOfElems = simCount+1;
-        return ((numOfElems-2)*(numOfElems-1))/2;
+        return ((simCount-1)*simCount)/2;
     }
     
     int numberOfArithmeticSlices(vector<int>& nums) {
-        int simCount = 1;
-        int ans = 0;
+        unsigned int simCount = 1;
+        unsigned int ans = 0;
         for(auto i=2;i<nums.size();i++){
             if(nums[i]-nums[i-1]==nums[i-1]-nums[i-2]){
                 simCount++;

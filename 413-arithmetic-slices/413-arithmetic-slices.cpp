@@ -10,18 +10,12 @@ public:
         // int prev = INT_MAX;
         int simCount = 1;
         int ans = 0;
-        for(auto i=1;i<diffs.size();i++){
-            if(diffs[i]==diffs[i-1]){
+        for(auto i=2;i<nums.size();i++){
+            if(nums[i]-nums[i-1]==nums[i-1]-nums[i-2]){
                 simCount++;
             }
             else{
                 auto numOfElems = simCount+1;
-                // 1 2 3 4
-                //  1 1 1
-                
-                // 3 to numOfElems
-                // 
-                
                 for(auto atATime = 3;atATime<=numOfElems;atATime++){
                     ans += (numOfElems-atATime+1);
                 }

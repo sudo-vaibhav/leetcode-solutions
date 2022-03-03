@@ -1,13 +1,15 @@
 class Solution {
 public:
+    int getCounts(int simCount){
+        auto numOfElems = simCount+1;
+        // auto ans = 0;
+        // for(auto atATime = 3;atATime<=numOfElems;atATime++){
+        //     ans += (numOfElems-atATime+1);
+        // }
+        return ((numOfElems-2)*(numOfElems-1))/2;
+    }
+    
     int numberOfArithmeticSlices(vector<int>& nums) {
-        vector<int> diffs;
-        
-        for(auto i=1;i<nums.size();i++){
-            diffs.push_back(nums[i]-nums[i-1]);
-        }
-        
-        // int prev = INT_MAX;
         int simCount = 1;
         int ans = 0;
         for(auto i=2;i<nums.size();i++){
@@ -15,25 +17,11 @@ public:
                 simCount++;
             }
             else{
-                auto numOfElems = simCount+1;
-                for(auto atATime = 3;atATime<=numOfElems;atATime++){
-                    ans += (numOfElems-atATime+1);
-                }
-                
+                ans+= getCounts(simCount);
                 simCount = 1;
             }
         }
-        
-        auto numOfElems = simCount+1;
-                // 1 2 3 4 5 7
-                //  1 1 1 1 2
-                
-                // 3 to numOfElems
-                // 
-                
-        for(auto atATime = 3;atATime<=numOfElems;atATime++){
-            ans += (numOfElems-atATime+1);
-        }
+        ans+= getCounts(simCount);
         return ans;
     }
 };

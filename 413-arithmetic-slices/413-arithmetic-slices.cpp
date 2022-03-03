@@ -1,11 +1,7 @@
 class Solution {
 public:
     int getCounts(int simCount){
-        auto numOfElems = simCount+1;
-        // auto ans = 0;
-        // for(auto atATime = 3;atATime<=numOfElems;atATime++){
-        //     ans += (numOfElems-atATime+1);
-        // }
+        const auto numOfElems = simCount+1;
         return ((numOfElems-2)*(numOfElems-1))/2;
     }
     

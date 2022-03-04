@@ -15,6 +15,7 @@ class Solution:
                     
                 if neededFreq>0:
                     ans.add(tuple(sorted((nums[i],nums[j],needed))))
+        
         return list(ans)
                 
                 

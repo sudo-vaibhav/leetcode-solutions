@@ -2,8 +2,7 @@
 class Solution {
 public:
     long MOD = 1000000007;
-    vector<vector<int>> dp;
-    long numberOfWays(int toBePicked,int toBeDelivered){
+    long numberOfWays(int toBePicked,int toBeDelivered,vector<vector<int>>& dp){
         if(toBePicked==0 && toBeDelivered==0) return 1;
         if(
             toBePicked<0 || 
@@ -17,16 +16,18 @@ public:
         
         // now find number of ways       
         // you can either pick now
-        long ans = toBePicked * numberOfWays(toBePicked-1,toBeDelivered);
+        long ans = toBePicked * numberOfWays(toBePicked-1,toBeDelivered,dp);
         ans%=MOD;
         // or deliver now (you can only deliver picked)
-        ans += (toBeDelivered-toBePicked)*numberOfWays(toBePicked,toBeDelivered-1);
+        ans += (toBeDelivered-toBePicked)*numberOfWays(toBePicked,toBeDelivered-1,dp);
         ans%=MOD;
         return dp[toBePicked][toBeDelivered]=ans;
     }    
     int countOrders(int n) {
-        dp=vector<vector<int>>(n+1,vector<int>(n+1,0));
-        return numberOfWays(n,n);
+        int toBePicked = n;
+        int toBeDelivered = n;
+        vector<vector<int>> dp(n+1,vector<int>(n+1,0));
+        return numberOfWays(toBePicked,toBeDelivered,dp);
     }
 };
 

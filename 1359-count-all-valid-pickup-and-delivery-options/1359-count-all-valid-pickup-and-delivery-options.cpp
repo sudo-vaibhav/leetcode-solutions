@@ -74,14 +74,15 @@ class Solution {
 public:
     int countOrders(int n) {
         long  MOD= 1e9+7;
-        long totalPlaces = 2*n;
+        long totalPlaces = 2*n; // total spaces to fill
         long ans = 1;
         for(long i=1;i<=totalPlaces;i++){
             ans *= i;
+            // divide by 2 one time for each product
             if(i%2==0) {
                 ans/=2;
             }
-            ans %= MOD;
+            ans %= MOD; // fit into answer space
         }
         
         return ans;

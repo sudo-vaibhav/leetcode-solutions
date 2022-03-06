@@ -10,12 +10,9 @@ public:
                     dp[i1][i2] = dp[i1-1][i2-1];
                 }
                 else{
-                    auto temp = vector<int>({
-                        dp[i1-1][i2],
-                        dp[i1][i2-1],
-                        dp[i1-1][i2-1]
-                    });
-                    dp[i1][i2] = 1+ *min_element(temp.begin(),temp.end());
+                    auto op1 = dp[i1-1][i2], op2 = dp[i1][i2-1],
+                        op3 = dp[i1-1][i2-1];
+                    dp[i1][i2] = 1+ min(op1,min(op2,op3));
                 }
             }
         }

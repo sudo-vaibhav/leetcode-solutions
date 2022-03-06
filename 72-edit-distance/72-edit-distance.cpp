@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minDistance(string word1, string word2) {
-        vector<vector<int>> dp(word1.size()+1,vector<int>(word2.size()+1,-1));
+        vector<vector<int>> dp(word1.size()+1,vector<int>(word2.size()+1));
         for(int i1=0;i1<=word1.size();i1++){
             for(int i2=0;i2<=word2.size();i2++){
                 if(i2==0) dp[i1][0] = i1;

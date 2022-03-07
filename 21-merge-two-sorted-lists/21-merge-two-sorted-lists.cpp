@@ -10,15 +10,11 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto h1 = list1,h2= list2;
-        auto res = new ListNode();
-        auto ans = res;
+    ListNode* mergeTwoLists(ListNode* h1, ListNode* h2) {
+        ListNode* res = new ListNode();
+        ListNode* ans = res;
         while(h1&&h2){
-            auto v1 = h1->val;
-            auto v2 = h2->val;
-            
-            if(v1<v2){
+            if(h1->val<h2->val){
                 ans->next = h1;
                 h1 = h1->next;
             }

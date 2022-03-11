@@ -26,9 +26,7 @@ public:
         cout<<ans.first<<endl;
         if(ans.first<=1||k%ans.first==0) return head;
         k = k%ans.first;
-        cout<<"new k:"<<k<<endl;
         int r = ans.first-k-1;
-        cout<<"r: "<<r<<endl;
         auto rthNode = head;
         while(r--){
             rthNode = rthNode->next;

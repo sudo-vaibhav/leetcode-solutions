@@ -54,21 +54,22 @@ public:
 //     }
 // };
 
+
+// void printList(Node* head){
+//         auto temp = head;
+//         while(temp){
+//             cout<<temp->val;
+//             if(temp->random){
+//                 cout<<" ("<<temp->random->val<<")";
+//             }
+//             cout<<"\t";
+//             temp = temp->next;
+//         }
+//         cout<<endl;
+// }
+
 class Solution{
     public:
-    void printList(Node* head){
-        auto temp = head;
-        while(temp){
-            cout<<temp->val;
-            if(temp->random){
-                cout<<" ("<<temp->random->val<<")";
-            }
-            cout<<"\t";
-            temp = temp->next;
-        }
-        cout<<endl;
-    }
-    
     Node* copyRandomList(Node* head) {
         if(!head) return NULL;
         
@@ -82,7 +83,7 @@ class Solution{
             temp = copyNode->next;
         }
         
-        printList(head);
+        // printList(head);
         
         // step2 - now establish random pointers
         auto oldIter = head;
@@ -103,7 +104,7 @@ class Solution{
             
         }
         
-        printList(head);
+        // printList(head);
         
         // step3 - establish next pointers and restore both old and new lists to final form
         oldIter = head;
@@ -129,9 +130,9 @@ class Solution{
             oldIter = oldIter->next;
         }
         
-        cout<<"final:\n";
-        printList(head);
-        printList(ans);
+        // cou t<<"final:\n";
+        // printList(head);
+        // printList(ans);
         return ans;
     }
 };

@@ -3,12 +3,13 @@
 // O(n) time and O(n) space soln using deque
 class Solution {
 public:
-    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(const vector<int>& nums, const int &k) {
         // pair -> index , val
         deque<pair<int,int>> q;
-        vector<int> ans;
-        for(int i=0;i<nums.size();i++){
-            auto cur = nums[i];
+        int n = nums.size();
+        vector<int> ans(n-k+1);
+        for(int i=0;i<n;i++){
+            const auto cur = nums[i];
             while(!q.empty() && q.front().first<i-k+1){
                 q.pop_front();
             }
@@ -19,7 +20,7 @@ public:
             
             q.push_back({i,cur});
             if(i>=k-1){
-                ans.push_back(q.front().second);
+                ans[i-k+1]=(q.front().second);
             }
         }
         return ans;

@@ -10,7 +10,8 @@ public:
         
         stack<pair<int,int>> s;
         
-        vector<int> prevSmaller(n),nextSmaller(n);
+        vector<int> prevSmaller(n);
+            // ,nextSmaller(n);
         
         for(int i=0;i<n;i++){
             auto cur = heights[i];
@@ -31,28 +32,21 @@ public:
         int maxArea = 0;
         for(int i=n-1;i>=0;i--){
             auto cur = heights[i];
+            int temp;
             while(!s.empty()&&s.top().first>=cur){
                 s.pop();
             }
             if(!s.empty()){
-                nextSmaller[i] = s.top().second;
+                temp = s.top().second;
             }
             else{
-                nextSmaller[i] = n;
+                temp = n;
             }
             
-            maxArea = max(maxArea,cur*(nextSmaller[i]-prevSmaller[i]-1));
+            maxArea = max(maxArea,cur*(temp-prevSmaller[i]-1));
             s.push({cur,i});
         }
         
-        // for(auto i:prevSmaller){
-        //     cout<<i<<"\t";
-        // }
-        // cout<<endl;
-        // for(auto j:nextSmaller){
-        //     cout<<j<<"\t";
-        // }
-        // cout<<endl;
         return maxArea;
         
     }

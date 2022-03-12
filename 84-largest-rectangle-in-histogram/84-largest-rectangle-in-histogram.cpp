@@ -11,7 +11,6 @@ public:
         stack<pair<int,int>> s;
         
         vector<int> prevSmaller(n);
-            // ,nextSmaller(n);
         
         for(int i=0;i<n;i++){
             auto cur = heights[i];
@@ -27,7 +26,10 @@ public:
             s.push({cur,i});
         }
         
-        s = stack<pair<int,int>>();
+        while(!s.empty()){
+            s.pop();
+        }
+        // s = stack<pair<int,int>>();
         
         int maxArea = 0;
         for(int i=n-1;i>=0;i--){

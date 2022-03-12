@@ -29,7 +29,6 @@ public:
         while(!s.empty()){
             s.pop();
         }
-        // s = stack<pair<int,int>>();
         
         int maxArea = 0;
         for(int i=n-1;i>=0;i--){
@@ -45,7 +44,10 @@ public:
                 temp = n;
             }
             
-            maxArea = max(maxArea,cur*(temp-prevSmaller[i]-1));
+            auto tempans = cur*(temp-prevSmaller[i]-1);
+            if(tempans>maxArea){
+                maxArea = tempans;
+            }
             s.push({cur,i});
         }
         

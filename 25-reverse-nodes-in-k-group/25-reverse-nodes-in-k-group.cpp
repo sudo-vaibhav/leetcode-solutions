@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* reverse(ListNode* start, ListNode* end){
+    ListNode* reverse(ListNode* start,const ListNode* end){
         ListNode* prev = NULL;
         while(start!=end){
             const auto temp =  start->next;

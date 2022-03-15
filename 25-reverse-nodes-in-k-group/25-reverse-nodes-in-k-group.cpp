@@ -24,18 +24,17 @@ public:
         if(k==1) return head;
         short int t;
         bool first = true;
-        ListNode* temp = head,*ans,*prevstart=NULL;
+        ListNode* temp = head,*ans,*prevstart=NULL,*tempans,*start;
         while(true){
-            auto start = temp;
+            start = temp;
             t=0;
-            while(t<k){
+            while(t++<k){
                 if(!temp){
                     return ans;
                 }
                 temp = temp->next;
-                t++;
             }
-            auto tempans = reverse(start,temp);
+            tempans = reverse(start,temp);
             if(first){
                 ans = tempans;
                 first = false;

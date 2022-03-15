@@ -20,21 +20,19 @@ public:
         }
         return prev;
     }
-    int getLength(ListNode* head){
-        auto temp = head;
-        int c= 0;
-        while(temp){
-            c++;
-            temp = temp->next;
-        }
+//     int getLength(ListNode* head){
+//         auto temp = head;
+//         int c= 0;
+//         while(temp){
+//             c++;
+//             temp = temp->next;
+//         }
         
-        return c;
-    }
+//         return c;
+//     }
     ListNode* reverseKGroup(ListNode* head, int k) {
         if(k==1) return head;
-        auto n = getLength(head);
-        // cout<<"length : "<<n<<endl;
-        int t = 0,c=0;
+        int t = 0;
         bool first = true;
         ListNode* ans;
         auto temp = head;
@@ -47,7 +45,7 @@ public:
                     return ans;
                 }
                 temp = temp->next;
-                c++;t++;
+                t++;
             }
             
         

@@ -22,7 +22,7 @@ public:
     }
     ListNode* reverseKGroup(ListNode* head,const int k) {
         if(k==1) return head;
-        short int t;
+        int t;
         bool first = true;
         ListNode* temp = head,*ans,*prevstart=NULL,*tempans,*start;
         while(true){

@@ -33,6 +33,7 @@ public:
             prev = slow;
             slow = temp;
         }
+        auto t = slow;
         if(fast){
             fast = slow->next;
         }
@@ -43,16 +44,21 @@ public:
         slow  = prev;
         // }
         
-        pl(slow);
-        pl(fast);
+        // pl(slow);
+        // pl(fast);
         
         while(fast&&slow){
             if(fast->val!=slow->val){
                 return false;
             }
+            
             fast = fast->next;
-            slow = slow->next;
+            auto x = slow->next;
+            slow->next = t;
+            t = slow;
+            slow = x;
         }
+        // pl(head);
         return true;
     }
 };

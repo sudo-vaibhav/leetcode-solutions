@@ -34,14 +34,14 @@ public:
                 temp = temp->next;
             }
             tempans = reverse(start,temp);
-            if(!ans){
+            if(ans==NULL){
                 ans = tempans;
             }
             if(prevstart){
                 prevstart->next = tempans;
             }
             prevstart = start;
-            start->next = temp;            
+            start->next = temp;      
         }
         return ans;
     }

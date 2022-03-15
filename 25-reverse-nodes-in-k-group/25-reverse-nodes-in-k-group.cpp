@@ -11,13 +11,6 @@
 class Solution {
 public:
     ListNode* reverse(ListNode* start, ListNode* end){
-        // cout<<"inside reverse"<<endl;
-        auto h = start;
-        // while(h!=end){
-        //     cout<<h->val<<"\t";
-        //     h= h->next;
-        // }
-        // cout<<endl;
         auto prev = end;
         while(start!=end){
             auto temp =  start->next;
@@ -25,15 +18,6 @@ public:
             prev = start;
             start = temp;
         }
-        
-        // cout<<"now see reverse"<<endl;
-        auto g = prev;
-        // while(g){
-        //     cout<<g->val<<"\t";
-        //     g = g->next;
-        // }
-        // cout<<endl;
-        // cout<<"going outside of reverse"<<endl;
         return prev;
     }
     int getLength(ListNode* head){
@@ -55,19 +39,13 @@ public:
         ListNode* ans;
         auto temp = head;
         ListNode* prevstart=NULL;
-        while(c+k<=n){
-            // cout<<"main val: "<<temp->val<<endl;
-            auto x = temp;
-            
-//             while(x){
-//                 cout<<x->val<<"\t";
-//                 x = x->next;
-//             }
-//             cout<<endl;
+        while(true){
             auto start = temp;
             t=0;
             while(t<k){
-                // cout<<temp->val<<endl;
+                if(!temp){
+                    return ans;
+                }
                 temp = temp->next;
                 c++;t++;
             }

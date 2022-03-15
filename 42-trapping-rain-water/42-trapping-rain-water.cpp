@@ -1,22 +1,10 @@
 class Solution {
 public:
-    void p(vector<int>& arr,vector<int> &nums){
-        for(auto i:arr){
-            if(i!=-1){
-            cout<<nums[i];    
-            }
-            else{
-                cout<<-1;
-            }
-            cout<<"\t";
-        }
-        cout<<endl;
-    }
     
+    stack<int> s;
     vector<int> prevGreater(vector<int>& nums){
-        int n = nums.size();
+        const int n = nums.size();
         vector<int> ans(n);
-        stack<int> s;
         for(int i=0;i<n;i++){
             while(!s.empty()&&nums[s.top()]<=nums[i]){
                 s.pop();
@@ -42,9 +30,9 @@ public:
     
     
     vector<int> nextGreater(vector<int>& nums){
-        int n = nums.size();
+        const int n = nums.size();
         vector<int> ans(n);
-        stack<int> s;
+        
         for(int i=n-1;i>=0;i--){
             while(!s.empty()&&nums[s.top()]<=nums[i]){
                 s.pop();
@@ -71,6 +59,7 @@ public:
     int trap(vector<int>& nums) {
         int n = nums.size();
         auto prev = prevGreater(nums);
+        s= stack<int>();
         auto next = nextGreater(nums);
         int ans = 0;
         

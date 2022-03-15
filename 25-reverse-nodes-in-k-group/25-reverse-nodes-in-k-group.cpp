@@ -11,9 +11,10 @@
 class Solution {
 public:
     ListNode* reverse(ListNode* start,const ListNode* end){
-        ListNode* prev = NULL;
+        ListNode *prev = NULL,*temp;
+        
         while(start!=end){
-            const auto temp =  start->next;
+            temp =  start->next;
             start->next = prev;
             prev = start;
             start = temp;

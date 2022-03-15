@@ -13,20 +13,18 @@ public:
     ListNode* reverse(ListNode* start, ListNode* end){
         ListNode* prev = NULL;
         while(start!=end){
-            auto temp =  start->next;
+            const auto temp =  start->next;
             start->next = prev;
             prev = start;
             start = temp;
         }
         return prev;
     }
-    ListNode* reverseKGroup(ListNode* head, int k) {
+    ListNode* reverseKGroup(ListNode* head,const int k) {
         if(k==1) return head;
-        int t;
+        short int t;
         bool first = true;
-        ListNode* ans;
-        auto temp = head;
-        ListNode* prevstart=NULL;
+        ListNode* temp = head,*ans,*prevstart=NULL;
         while(true){
             auto start = temp;
             t=0;

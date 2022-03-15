@@ -12,7 +12,6 @@ class Solution {
 public:
     ListNode* reverse(ListNode* start,const ListNode* end){
         ListNode *prev = NULL,*temp;
-        
         while(start!=end){
             temp =  start->next;
             start->next = prev;
@@ -24,8 +23,7 @@ public:
     ListNode* reverseKGroup(ListNode* head,const int k) {
         if(k==1) return head;
         int t;
-        bool first = true;
-        ListNode* temp = head,*ans,*prevstart=NULL,*tempans,*start;
+        ListNode *temp = head,*ans=NULL,*prevstart=NULL,*tempans,*start;
         while(true){
             start = temp;
             t=0;
@@ -36,9 +34,8 @@ public:
                 temp = temp->next;
             }
             tempans = reverse(start,temp);
-            if(first){
+            if(!ans){
                 ans = tempans;
-                first = false;
             }
             if(prevstart){
                 prevstart->next = tempans;

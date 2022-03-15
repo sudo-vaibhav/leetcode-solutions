@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* reverse(ListNode* start, ListNode* end){
-        auto prev = end;
+        ListNode* prev = NULL;
         while(start!=end){
             auto temp =  start->next;
             start->next = prev;
@@ -20,19 +20,9 @@ public:
         }
         return prev;
     }
-//     int getLength(ListNode* head){
-//         auto temp = head;
-//         int c= 0;
-//         while(temp){
-//             c++;
-//             temp = temp->next;
-//         }
-        
-//         return c;
-//     }
     ListNode* reverseKGroup(ListNode* head, int k) {
         if(k==1) return head;
-        int t = 0;
+        int t;
         bool first = true;
         ListNode* ans;
         auto temp = head;
@@ -47,24 +37,16 @@ public:
                 temp = temp->next;
                 t++;
             }
-            
-        
-            // cout<<"now running iter "<<t<<endl;
-            
-            
             auto tempans = reverse(start,temp);
             if(first){
                 ans = tempans;
                 first = false;
             }
-            if(prevstart)
-            prevstart->next = tempans;
+            if(prevstart){
+                prevstart->next = tempans;
+            }
             prevstart = start;
-            // cout<<"start was: "<<start->val<<endl;
-            // cout<<"temp was: "<<temp->val<<endl;
-            start->next = temp;
-            // cout<<"tempans: "<<tempans->val<<"\n";
-            
+            start->next = temp;            
         }
         return ans;
     }

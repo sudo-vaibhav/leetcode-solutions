@@ -7,8 +7,8 @@
 
 class Solution:
     def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
-        if not original : return None
+        if not cloned : return None
         else:
-            if original.val == target.val: return cloned
+            if cloned.val == target.val: return cloned
             else:
                 return self.getTargetCopy(original.left,cloned.left,target) or self.getTargetCopy(original.right,cloned.right,target) 

@@ -25,10 +25,11 @@ public:
         auto r = lvr(root->right);
         
         // if current subtree a bst
-        vector<int> temp = {
+        vector<int> temp =  {
             min(root->val,min(l[MIN],r[MIN])),
             max(root->val,max(l[MAX],r[MAX])),
-            root->val+l[SUM]+r[SUM]
+            root->val+l[SUM]+r[SUM],
+            0
         };
     
         if(
@@ -36,13 +37,10 @@ public:
             root->val<r[MIN]&&
             l[IS_BST]&&r[IS_BST]
         ){
-            temp.push_back(true);
+            temp[3] = 1;
         }
-        else{
-            temp.push_back(false);
-        }
-        if (temp[IS_BST]){
-            ans = max(ans,temp[SUM]);
+        if (temp[IS_BST] && temp[SUM]>ans){
+            ans = temp[SUM];
         }
         return temp;
     }

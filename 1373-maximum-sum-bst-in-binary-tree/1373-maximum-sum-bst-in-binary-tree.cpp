@@ -48,6 +48,10 @@ public:
         if (temp[IS_BST]){
             ans = max(ans,temp[SUM]);
         }
+        if(l)
+        m.erase(l);
+        if(r)
+        m.erase(r);
     }
     
     int maxSumBST(TreeNode* root) {

@@ -19,9 +19,8 @@ public:
             temp = temp->left;
         }
     }
-    
     int next() {
-        auto h = s.top();
+        const auto h = s.top();
         s.pop();
         auto temp = h->right;
         while(temp){
@@ -30,7 +29,6 @@ public:
         }
         return h->val;
     }
-    
     bool hasNext() {
         return !s.empty();
     }

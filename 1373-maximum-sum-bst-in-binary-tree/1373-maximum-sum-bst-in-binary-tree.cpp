@@ -17,47 +17,39 @@ class Solution {
 public:
     int ans;
     // vector order -> min , max , sum, isBst
-    void lvr(TreeNode* root, map<TreeNode*,vector<int>> &m){
+    vector<int> lvr(TreeNode* root){
         if(!root){
-            m[root] = {INT_MAX,INT_MIN,0,true};
-            return;
+            return {INT_MAX,INT_MIN,0,true};
         }
-        lvr(root->left,m);
-        lvr(root->right,m);
+        auto l = lvr(root->left);
+        auto r = lvr(root->right);
         
         // if current subtree a bst
-        auto l = root->left;
-        auto r = root->right;
         vector<int> temp = {
-            min(root->val,min(m[l][MIN],m[r][MIN])),
-            max(root->val,max(m[l][MAX],m[r][MAX])),
-            root->val+m[l][SUM]+m[r][SUM]
+            min(root->val,min(l[MIN],r[MIN])),
+            max(root->val,max(l[MAX],r[MAX])),
+            root->val+l[SUM]+r[SUM]
         };
     
         if(
-            root->val>m[l][MAX]&&
-            root->val<m[r][MIN]&&
-            m[l][IS_BST]&&m[r][IS_BST]
+            root->val>l[MAX]&&
+            root->val<r[MIN]&&
+            l[IS_BST]&&r[IS_BST]
         ){
             temp.push_back(true);
         }
         else{
             temp.push_back(false);
         }
-        m[root] = temp;
         if (temp[IS_BST]){
             ans = max(ans,temp[SUM]);
         }
-        if(l)
-        m.erase(l);
-        if(r)
-        m.erase(r);
+        return temp;
     }
     
     int maxSumBST(TreeNode* root) {
         ans = 0;
-        map<TreeNode*,vector<int>> m;
-        lvr(root,m);
+        lvr(root);
         return ans;
         
     }

@@ -17,7 +17,7 @@ class Solution {
 public:
     int ans;
     // vector order -> min , max , sum, isBst
-    void lvr(TreeNode* root, unordered_map<TreeNode*,vector<int>> &m){
+    void lvr(TreeNode* root, map<TreeNode*,vector<int>> &m){
         if(!root){
             m[root] = {INT_MAX,INT_MIN,0,true};
             return;
@@ -52,7 +52,7 @@ public:
     
     int maxSumBST(TreeNode* root) {
         ans = 0;
-        unordered_map<TreeNode*,vector<int>> m;
+        map<TreeNode*,vector<int>> m;
         lvr(root,m);
         return ans;
         

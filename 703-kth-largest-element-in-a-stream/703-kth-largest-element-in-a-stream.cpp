@@ -1,7 +1,6 @@
 class KthLargest {
 public:
     priority_queue<int,vector<int>,greater<int>> large;
-    priority_queue<int> small;
     int K;
     KthLargest(int k, vector<int>& nums) {
         K = k;
@@ -12,16 +11,11 @@ public:
             large.push(nums[i--]);
             c++;
         }
-        
-        while(i>=0){
-            small.push(nums[i--]);
-        }
     }
     
     int add(int val) {
         large.push(val);
         if(large.size()>K){
-            small.push(large.top());
             large.pop();
         }
         return large.top();

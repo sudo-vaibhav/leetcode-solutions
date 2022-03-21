@@ -19,12 +19,12 @@ public:
         }
         
         sort(intervals.begin(),intervals.end(),[](pair<int,int> i1,pair<int,int> i2){
-            if(i1.first!=i2.first){
+            // if(i1.first!=i2.first){
                 return i1.first<i2.first;
-            }
-            else{
-                return i1.second<i2.second;
-            }
+            // }
+            // else{
+                // return i1.second<i2.second;
+            // }
         });
         vector<pair<int,int>> ans;
         pair<int,int> prev = intervals[0];

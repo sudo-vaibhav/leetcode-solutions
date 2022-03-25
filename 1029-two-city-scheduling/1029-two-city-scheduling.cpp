@@ -32,30 +32,54 @@
 
 
 // refund concept
+// class Solution{
+//   public:
+//   int twoCitySchedCost(vector<vector<int>>& costs) {
+//         int n = costs.size();
+//         vector<int> init = {0, 0};
+//         auto cumulationRes = accumulate(
+//             costs.begin(), costs.end(), init, 
+//             [](vector<int> X, vector<int> Y){
+//                 vector<int> res= {X[0] + Y[0], 0};
+//                 return res; 
+//             }
+//         );
+//         int cost = cumulationRes[0];
+//         vector<int> benefitsOfTransfering(n);
+//         for (int i = 0; i < n; i++)
+//         {
+//             benefitsOfTransfering[i] = costs[i][0] - costs[i][1];
+//         }
+
+//         sort(benefitsOfTransfering.begin(), benefitsOfTransfering.end());
+//         for (int i = n / 2; i < n; i++)
+//         {
+//             cost -= benefitsOfTransfering[i];
+//         }
+//         return cost;
+//     }
+// };
+
+
+// refund concept quick select approach
 class Solution{
   public:
   int twoCitySchedCost(vector<vector<int>>& costs) {
-        int n = costs.size();
-        vector<int> init = {0, 0};
-        auto cumulationRes = accumulate(
-            costs.begin(), costs.end(), init, 
-            [](vector<int> X, vector<int> Y){
-                vector<int> res= {X[0] + Y[0], 0};
-                return res; 
-            }
-        );
-        int cost = cumulationRes[0];
-        vector<int> benefitsOfTransfering(n);
-        for (int i = 0; i < n; i++)
-        {
-            benefitsOfTransfering[i] = costs[i][0] - costs[i][1];
-        }
-
-        sort(benefitsOfTransfering.begin(), benefitsOfTransfering.end());
-        for (int i = n / 2; i < n; i++)
-        {
-            cost -= benefitsOfTransfering[i];
-        }
-        return cost;
+      int n = costs.size();  
+      nth_element(costs.begin(),costs.begin()+n/2,costs.end(),
+                  [](vector<int>a,vector<int>b){
+                        return a[0]-a[1]<b[0]-b[1];
+      });
+      
+      int s = 0;
+      for (int i=0;i<n;i++){
+          if(i<n/2){
+              s+=costs[i][0];
+          }
+          else{
+              s+=costs[i][1];
+          }
+      }
+      return s;
     }
 };

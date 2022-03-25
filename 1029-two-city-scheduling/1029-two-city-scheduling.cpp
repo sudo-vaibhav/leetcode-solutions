@@ -65,20 +65,15 @@
 class Solution{
   public:
   int twoCitySchedCost(vector<vector<int>>& costs) {
-      int n = costs.size();  
+      const int n = costs.size();  
       nth_element(costs.begin(),costs.begin()+n/2,costs.end(),
-                  [](vector<int>a,vector<int>b){
+                  [](const vector<int>&a,const vector<int>&b){
                         return a[0]-a[1]<b[0]-b[1];
       });
       
       int s = 0;
       for (int i=0;i<n/2;i++){
-          // if(i<n/2){
-              s+=costs[i][0]+costs[i+n/2][1];
-          // }
-          // else{
-              // s+=;
-          // }
+        s+=costs[i][0]+costs[i+n/2][1];
       }
       return s;
     }

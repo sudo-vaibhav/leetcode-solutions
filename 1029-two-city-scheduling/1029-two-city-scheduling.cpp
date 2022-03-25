@@ -33,14 +33,17 @@
 
 // refund concept
 class Solution{
-    public:
+  public:
   int twoCitySchedCost(vector<vector<int>>& costs) {
         int n = costs.size();
         vector<int> init = {0, 0};
-        auto cumulationRes = accumulate(costs.begin(), costs.end(), init, [](vector<int> X, vector<int> Y)
-                                        {
-                                           vector<int> res= {X[0] + Y[0], 0};
-                                            return res; });
+        auto cumulationRes = accumulate(
+            costs.begin(), costs.end(), init, 
+            [](vector<int> X, vector<int> Y){
+                vector<int> res= {X[0] + Y[0], 0};
+                return res; 
+            }
+        );
         int cost = cumulationRes[0];
         vector<int> benefitsOfTransfering(n);
         for (int i = 0; i < n; i++)

@@ -4,7 +4,7 @@ public:
     int h;
     int n;
     TreeAncestor(int n, vector<int>& parent) {
-        h = (int) ceil(log2(n))+1;
+        h = 20 ;//(int) ceil(log2(n))+1;
         this->n = n;
         anc = vector<vector<int>>(n,vector<int>(h,-1));
         // set 0th index ( which points to parent of that node)
@@ -12,6 +12,7 @@ public:
             anc[i][0] = parent[i];
         }
         
+        // set up jump pointers
         for(int j=1;j<h;j++){
             for(int i=0;i<n;i++){
                 if(anc[i][j-1]==-1) {

@@ -40,7 +40,6 @@ public:
             }
         }
         return cur;
-        return 0;
     }
 };
 

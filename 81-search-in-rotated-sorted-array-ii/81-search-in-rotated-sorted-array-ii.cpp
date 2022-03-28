@@ -1,10 +1,10 @@
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-        int l = 0,r=nums.size()-1;
+        short l = 0,r=nums.size()-1,mid,val;
         while(l<=r){
-            int mid = l+(r-l)/2;
-            int val = nums[mid];
+            mid = l+(r-l)/2;
+            val = nums[mid];
             if(val==target) return true;
             
             if(nums[l]<val){

@@ -1,7 +1,5 @@
 class Solution:
-    def numTrees(self, n: int) -> int:
-        nodes = [i for i in range(1,n+1)]
-        
+    def numTrees(self, n: int) -> int:        
         @cache
         def solve(nCount):
             if nCount<=1: return 1

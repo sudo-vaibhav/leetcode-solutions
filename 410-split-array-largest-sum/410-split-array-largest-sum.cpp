@@ -1,6 +1,5 @@
 class Solution {
 public:
-    
     int findSubArrayCount(vector<int>& nums,int maxSum){
         int m=1;
         int s=nums[0];

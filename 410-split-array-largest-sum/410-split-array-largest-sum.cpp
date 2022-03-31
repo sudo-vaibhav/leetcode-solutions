@@ -1,34 +1,38 @@
 class Solution {
 public:
-    int findSubArrayCount(vector<int>& nums,int maxSum){
-        int m=1;
-        int s=nums[0];
-        for(int i=1;i<nums.size();i++){
-            if(s+nums[i]>maxSum){
-                m++;
-                s=nums[i];
-            }
-            else{
-                s+=nums[i];
+    vector<int> ps;
+    map<pair<int,int>,int> dp;
+    int n;
+    int solve(int idx, int m){
+        if(dp.count({idx,m})) return dp[{idx,m}];
+        if(m==1){
+            return ps[n]-ps[idx];
+        } 
+        int tempans = ps[n];
+        for(int endAt=idx;endAt< n-m+1;endAt++){
+            auto temp = ps[endAt+1]-ps[idx];
+            tempans = min(tempans,max(
+                solve(endAt+1,m-1),
+                temp
+            ));
+            if (temp>tempans){
+                break;
             }
         }
-        return m;
+        
+        return dp[{idx,m}]=tempans;
     }
+    
     int splitArray(vector<int>& nums, int m) {
-        int lowestMaxSubSum = *max_element(nums.begin(),nums.end());
-        int maxMaxSubSum = accumulate(nums.begin(),nums.end(),0);
-        int ans = maxMaxSubSum;
-        while(lowestMaxSubSum<=maxMaxSubSum){
-            int midMaxSubSum = (lowestMaxSubSum+maxMaxSubSum)/2;
-            auto suggestedM = findSubArrayCount(nums,midMaxSubSum);
-            if(suggestedM<=m){
-                ans = min(ans,midMaxSubSum);
-                maxMaxSubSum=midMaxSubSum-1;
-            }
-            else{
-                lowestMaxSubSum=midMaxSubSum+1;
-            }
+        ps = {0};
+        dp = map<pair<int,int>,int>();
+        int s = 0;
+        n = nums.size();
+        for(int i:nums){
+            s+=i;
+            ps.push_back(s);
         }
-        return ans;
+        
+        return solve(0,m);
     }
 };

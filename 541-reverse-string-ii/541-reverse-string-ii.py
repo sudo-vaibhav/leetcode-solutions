@@ -5,17 +5,11 @@ class Solution:
         n = len(s)
         while i<n:
             u=""
-            
             upperBound = min(n,i+2*k) 
             while i<upperBound:
                 u+=s[i]
                 i+=1
-                
-            
             u = u[:k][::-1]+u[k:]
-            temp.append(u)
-            
-        print(temp)
-        
+            temp.append(u)        
         return "".join(temp)
             

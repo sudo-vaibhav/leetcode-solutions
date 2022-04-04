@@ -45,8 +45,8 @@ class Solution:
                             r += 1
                         z[i] = r - l
                         r -= 1
-        z = [0]*len(s)
+        z = [len(s)]*len(s)
         getZarr(s,z)
         # print(z)
-        return len(s)+sum(z)
+        return sum(z)
  

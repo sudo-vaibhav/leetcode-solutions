@@ -5,9 +5,10 @@ class Solution:
         for i in arr:
             count[i]+=1
         arr.sort()
-            
         final_answer=0
-        
+        @cache
+        def fac(n):
+            return math.factorial(n)
         for i in range(0,len(arr)-2):
             if(i!=0 and arr[i]==arr[i-1]):
                 continue;
@@ -23,16 +24,13 @@ class Solution:
                     j_count=count[arr[j]]
                     k_count=count[arr[k]]
                     if(arr[i]==arr[k]):
-                        final_answer+= (math.factorial(i_count)//(math.factorial(i_count-3)*math.factorial(3)))
+                        final_answer+= fac(i_count)//(fac(i_count-3)*fac(3))
                     elif(arr[i]==arr[j]):
                         final_answer+= k_count*(i_count-1)*(i_count)//2
                     elif(arr[j]==arr[k]):
                         final_answer+= i_count*(j_count-1)*(j_count)//2
                     else:
                         final_answer+=(i_count*j_count*k_count)
-                    # if(final_answer>(10**9 + 7)):
-                    #     final_answer=int(final_answer)%(10**9 + 7)
-                    #print(i,j,k,i_count,j_count,k_count,final_answer)
                     j+=1
                     k-=1
                 elif(arr[j]+arr[k]>target-arr[i]):
@@ -41,4 +39,5 @@ class Solution:
                     j+=1
                 if final_answer>=mod:
                     final_answer-=mod
+                
         return final_answer

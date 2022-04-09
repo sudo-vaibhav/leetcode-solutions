@@ -1,14 +1,11 @@
-class NumArray:
-
-        
-
-        
+class NumArray: 
+#     fenwick tree based implementation
     def __init__(self, nums: List[int]):
         self.nums = [0]*len(nums)
         self.ftree = [0]*(len(nums)+1)
         for i in range(len(nums)):
             self.update(i,nums[i])
-
+# not using this as array is immutable
     def update(self,i,val):
         delta = val-self.nums[i]
         self.nums[i]=val;

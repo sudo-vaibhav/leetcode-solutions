@@ -3,7 +3,16 @@ class Solution:
         ans = 0
         for idx,b in enumerate(num2[::-1]):
             base = 10**idx
-            tempans = int(num1)*int(b)
+            tempans = 0
+            c=0
+            mul = 1
+            for a in num1[::-1]:
+                f = int(a)*int(b)
+                f+=c
+                c = f//10
+                tempans +=mul*(f%10)
+                mul*=10
+            tempans+=c*mul    
             ans+=base*tempans
             
         return str(ans)

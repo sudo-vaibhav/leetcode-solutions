@@ -5,10 +5,10 @@ public:
         vector<vector<int>> dist(m,vector<int>(n,INT_MAX));
         vector<vector<int>> moves = {{-1,0},{1,0},{0,1},{0,-1}};
         int land = 1,water=0;
+        queue<vector<int>> q;
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(grid[i][j]==land){
-                    queue<vector<int>> q;
                     dist[i][j]=0;
                     q.push({i,j});
                     int steps = 0;

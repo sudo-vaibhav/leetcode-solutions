@@ -5,7 +5,7 @@ class Solution:
         for f in flights:
             adj[f[0]].append((f[1],f[2]))
           
-        print(adj)
+        # print(adj)
         
         @cache
         def solve(source,dest,k):

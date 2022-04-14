@@ -6,7 +6,7 @@ class Solution:
         def minJumps(src,dest,forJump,backJump,canJumpBack):
             vis.add((src,canJumpBack))
             if dest==src: return 0
-            if ((src<0) or (src in forbidden) or (src>6000)): return inf
+            if ((src<0) or (src in forbidden) or (src>8000)): return inf
             tempans = inf
             if (src+forJump,1) not in vis:
                 tempans = 1+minJumps(src+forJump,dest,forJump,backJump,1)

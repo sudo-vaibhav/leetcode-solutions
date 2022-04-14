@@ -1,7 +1,6 @@
 class Solution:
     def minimumJumps(self, forbidden: List[int], a: int, b: int, x: int) -> int:
         forbidden = set(forbidden)
-        print(forbidden)
         vis = set()
         @cache
         def minJumps(src,dest,forJump,backJump,canJumpBack):

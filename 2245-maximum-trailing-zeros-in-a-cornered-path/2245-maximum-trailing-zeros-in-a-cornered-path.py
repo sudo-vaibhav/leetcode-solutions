@@ -12,10 +12,10 @@ class Solution:
                 num/=5
             return tuple(ans)
         
-        top = [[None for i in range(n)] for j in range(m)]
-        left = [[None for i in range(n)] for j in range(m)]
-        bottom = [[None for i in range(n)] for j in range(m)]
-        right = [[None for i in range(n)] for j in range(m)]
+        top = [[[0,0] for i in range(n)] for j in range(m)]
+        left = [[[0,0] for i in range(n)] for j in range(m)]
+        bottom = [[[0,0] for i in range(n)] for j in range(m)]
+        right = [[[0,0] for i in range(n)] for j in range(m)]
         
         def sum_factors(p1,p2):
             return [p1[0]+p2[0],p1[1]+p2[1]]

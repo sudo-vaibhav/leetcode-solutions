@@ -5,42 +5,23 @@
 #         self.next = next
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        def pl(head):
-            return
-            temp = head
-            print("printing list")
-            while temp:
-                print(temp.val,end=",")
-                temp=temp.next
-            print()
-            # print("length",self.length)
-        # print(head)
-        slow = head
-        fast = head
-        prev = None
+        slow,fast,prev = head,head,None
+
         if fast and fast.next:
             while fast and fast.next:
                 fast = fast.next.next
                 prev = slow
                 slow = slow.next
-                
         else:
-#             single length linked list
             return fast
         
-        # print(prev)
         if fast:
             temp = slow.next
             slow.next = None
             slow = temp
-            # prev = None
         else:
             prev.next = None
-            # prev = None
-        
-        # pl(head)
-        # pl(slow)
-        
+                
         def rev(node):
             prev = None
             while node.next:
@@ -52,9 +33,7 @@ class Solution:
             return node
             
         tail = rev(slow)
-        # pl(head)
-        # pl(tail)
-        backup = head
+        backup = head # make a copy of head
         while tail:
             t = head.next
             head.next = tail

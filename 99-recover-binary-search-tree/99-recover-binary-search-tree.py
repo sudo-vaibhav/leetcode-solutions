@@ -41,13 +41,15 @@ class Solution:
         self.prev = TreeNode(-inf)
         self.first,self.second = None,None
         
-    def recoverTree(self, cur: Optional[TreeNode]) -> None:
-        def check(root):
-            if self.prev.val > root.val and not self.first:
+    def recoverTree(self, root: Optional[TreeNode]) -> None:
+        def check(cur):
+            if self.prev.val > cur.val and not self.first:
                 self.first = self.prev
-            if self.prev.val > root.val and self.first:
-                self.second = root
-            self.prev = root
+            if self.prev.val > cur.val and self.first:
+                self.second = cur
+            self.prev = cur
+        
+        cur = root
         while cur:
             if not cur.left:
                 check(cur)

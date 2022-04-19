@@ -20,9 +20,8 @@ class Solution:
                 elif r2>r1:
                     self.parent[p2]=p1
                 else:
-                    if p1<p2:
-                        p1,p2 = p2,p1
-                    
+                    # if p1<p2:
+                    #     p1,p2 = p2,p1
 #                     rule : greater will become parent
                     self.parent[p2] = p1
                     self.rank[p1]+=1

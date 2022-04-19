@@ -5,7 +5,7 @@ class Solution:
         def checkCyc(i,pos):
             slow,fast = i,i
             while True:
-                if ((nums[slow]>0) ^ pos) or ((nums[fast]>0) ^ pos):
+                if (nums[fast]>0) ^ pos:
                     return False
                 newSlow = nums[slow]+slow
                 newFast = nums[fast]+fast

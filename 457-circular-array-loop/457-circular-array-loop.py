@@ -17,18 +17,7 @@ class Solution:
                 fast = newFast%n
                 if (fast==slow):
                     break
-                
-            length = 0
-            while True:
-                newSlow = nums[slow]+slow
-                
-                slow = newSlow%n
-                
-                length+=1
-                if slow==fast:
-                    break
-                
-            return length>1
+            return (slow+nums[slow])%n!=slow
             
         for i in range(n):
             if checkCyc(i,nums[i]>0):

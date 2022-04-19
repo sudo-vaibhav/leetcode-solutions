@@ -38,17 +38,16 @@
 
 class Solution:
     def __init__(self):
-        self.prev = TreeNode(float("-inf"))
-        self.first = None
-        self.second = None
-    def recoverTree(self, root: Optional[TreeNode]) -> None:
+        self.prev = TreeNode(-inf)
+        self.first,self.second = None,None
+        
+    def recoverTree(self, cur: Optional[TreeNode]) -> None:
         def check(root):
-            if self.prev.val > cur.val and not self.first:
+            if self.prev.val > root.val and not self.first:
                 self.first = self.prev
-            if self.prev.val > cur.val and self.first:
-                self.second = cur
-            self.prev = cur
-        cur = root
+            if self.prev.val > root.val and self.first:
+                self.second = root
+            self.prev = root
         while cur:
             if not cur.left:
                 check(cur)
@@ -62,7 +61,6 @@ class Solution:
                     cur = cur.left
                 else:
                     temp.right = None
-                    check(temp)
+                    check(cur)
                     cur = cur.right
-        
         self.first.val,self.second.val = self.second.val,self.first.val

@@ -16,44 +16,53 @@
 #                     break
 #         viol1.val,viol2.val = viol2.val,viol1.val
 
+# class Solution:
+#     def __init__(self):
+#         self.prev = TreeNode(float("-inf"))
+#         self.first = None
+#         self.second = None
+#     def recoverTree(self, root: Optional[TreeNode]) -> None:
+#         def lvr(root):
+#             if not root: return
+#             lvr(root.left)
+            
+#             if self.prev.val > root.val and not self.first:
+#                 self.first = self.prev
+#             if self.prev.val > root.val and self.first:
+#                 self.second = root
+#             self.prev = root
+#             lvr(root.right)
+        
+#         lvr(root)    
+#         self.first.val,self.second.val = self.second.val,self.first.val
+
 class Solution:
     def __init__(self):
         self.prev = TreeNode(float("-inf"))
         self.first = None
         self.second = None
     def recoverTree(self, root: Optional[TreeNode]) -> None:
-        def lvr(root):
-            if not root: return
-            lvr(root.left)
-            
-            if self.prev.val > root.val and not self.first:
+        def check(root):
+            if self.prev.val > cur.val and not self.first:
                 self.first = self.prev
-            if self.prev.val > root.val and self.first:
-                self.second = root
-            self.prev = root
-            lvr(root.right)
+            if self.prev.val > cur.val and self.first:
+                self.second = cur
+            self.prev = cur
+        cur = root
+        while cur:
+            if not cur.left:
+                check(cur)
+                cur = cur.right
+            else:
+                temp = cur.left
+                while temp.right and temp.right != cur:
+                    temp = temp.right
+                if temp.right!=cur:
+                    temp.right = cur
+                    cur = cur.left
+                else:
+                    temp.right = None
+                    check(temp)
+                    cur = cur.right
         
-        lvr(root)    
         self.first.val,self.second.val = self.second.val,self.first.val
-
-# class Solution:
-#     def __init__(self):
-#         self.first, self.second = None, None
-#         self.prev = TreeNode(float('-inf'))
-        
-#     def recoverTree(self, root: TreeNode) -> None:
-#         """
-#         Do not return anything, modify root in-place instead.
-#         """
-#         def inorder(root):
-#             if root:
-#                 inorder(root.left)
-#                 if not self.first and self.prev.val >= root.val:
-#                     self.first = self.prev
-#                 if self.first and self.prev.val >= root.val:
-#                     self.second = root
-#                 self.prev = root
-#                 inorder(root.right)
-        
-#         inorder(root)
-#         self.first.val, self.second.val = self.second.val, self.first.val

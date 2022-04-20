@@ -15,8 +15,11 @@ class Solution:
         temp = [*[x[0] for x in events],*[x[1] for x in events]]
         min_day = min(temp)
         max_day = max(temp)
-        for day in range(min_day,max_day+1):
+        day = min_day
+        while day<max_day+1:
             # print(day,q)
+            if len(q)==0 and i<n:
+                day = events[i][0]
             while i<n and events[i][0]<=day:
                 heappush(q,(events[i][1],events[i]))
                 i+=1
@@ -25,6 +28,7 @@ class Solution:
             if len(q)>0:
                 heappop(q)
                 cnt+=1
+            day+=1
                 
         return cnt
         

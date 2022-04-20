@@ -16,7 +16,7 @@ class Solution:
         min_day = min(temp)
         max_day = max(temp)
         day = min_day
-        while day<max_day+1:
+        while day<max_day+1 and cnt<n:
             # print(day,q)
             if len(q)==0 and i<n:
                 day = events[i][0]

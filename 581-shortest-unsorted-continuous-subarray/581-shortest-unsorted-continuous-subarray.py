@@ -6,5 +6,5 @@ class Solution:
             if t[idx]!=nums[idx]:
                 l = min(idx,l)
                 r = max(idx,r)
-        print(l,r)
+        # print(l,r)
         return max(r-l+1,0)

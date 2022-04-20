@@ -4,7 +4,10 @@ class Solution:
         l,r = inf,-inf
         for idx in range(len(nums)):
             if t[idx]!=nums[idx]:
-                l = min(idx,l)
-                r = max(idx,r)
-        # print(l,r)
-        return max(r-l+1,0)
+                if idx<l:
+                    l = idx
+                if idx>r:
+                    r = idx
+        if r-l+1>0:
+            return r-l+1
+        return 0

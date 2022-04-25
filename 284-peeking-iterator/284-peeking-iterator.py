@@ -1,59 +1,22 @@
-# Below is the interface for Iterator, which is already defined for you.
-#
-# class Iterator:
-#     def __init__(self, nums):
-#         """
-#         Initializes an iterator object to the beginning of a list.
-#         :type nums: List[int]
-#         """
-#
-#     def hasNext(self):
-#         """
-#         Returns true if the iteration has more elements.
-#         :rtype: bool
-#         """
-#
-#     def next(self):
-#         """
-#         Returns the next element in the iteration.
-#         :rtype: int
-#         """
-
 class PeekingIterator:
     def __init__(self, it):
-        """
-        Initialize your data structure here.
-        :type iterator: Iterator
-        """
         self.it = it
-        self.buf = collections.deque()
+        self.buf = None
         
 
     def peek(self):
-        """
-        Returns the next element in the iteration without advancing the iterator.
-        :rtype: int
-        """
         if not self.buf:
-            self.buf.append(self.it.next())    
-        return self.buf[0] 
+            self.buf = self.it.next()    
+        return self.buf
         
 
     def next(self):
-        """
-        :rtype: int
-        """
         if not self.buf:
-            self.buf.append(self.it.next())
-        return self.buf.popleft()
+            self.buf = self.it.next()
+        val = self.buf
+        self.buf = None
+        return val
         
 
     def hasNext(self):
-        return len(self.buf)>0 or self.it.hasNext()
-        
-
-# Your PeekingIterator object will be instantiated and called as such:
-# iter = PeekingIterator(Iterator(nums))
-# while iter.hasNext():
-#     val = iter.peek()   # Get the next element but not advance the iterator.
-#     iter.next()         # Should return the same value as [val].
+        return self.buf!=None or self.it.hasNext()

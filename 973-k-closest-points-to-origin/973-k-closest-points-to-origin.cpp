@@ -4,20 +4,17 @@ double getDist(vector<int>&a){
 bool comp(vector<int>& a, vector<int>& b)
 {
     auto A=getDist(a),B=getDist(b);
-    // auto temp = getDist(a)-getDist(b);
-    // cout<<temp;
     return A<B;
 }
 
-    
 class Solution {
 public:
     
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
         nth_element(points.begin(),points.begin()+k,points.end(),comp);
-        vector<vector<int>> ans(k);
+        vector<vector<int>> ans;
         for (int i=0;i<k;i++){
-            ans[i] = points[i];
+            ans.push_back(points[i]);
         }
         
         return ans;

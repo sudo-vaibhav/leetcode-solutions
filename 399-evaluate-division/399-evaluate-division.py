@@ -1,21 +1,29 @@
 class Solution:
     def calcEquation(self, eqns, values, qrys):
-        adj,ans= defaultdict(list),[]
-        for idx,(u,v) in enumerate(eqns):
-            val = values[idx]
-            adj[u].append((v,val)),adj[v].append((u,1/val))
-        def dfs(cur,target,vis,soFar=1.0):
-            if cur==target and cur in adj:
-                return soFar
-            vis.add(cur)
-            for dest,amt in adj[cur]:
-                if dest not in vis:
-                    temp= dfs(dest, target,vis,soFar*amt)
-                    if temp!=-1.0:
-                        return temp
-            return -1.0
-        for num,denom in qrys:
-            vis = set()
-            ans.append(dfs(num,denom,vis))
-        return ans
+        root = {}
+        
+        def find(x):
+            xp,xr = root.setdefault(x,(x,1.0))
+            if xp!=x:
+                grandparent,grandparentratio = find(xp)
+                root[x] = (grandparent,grandparentratio*xr)
+            return root[x]
+        
+        def union(u,v,val):
+            pu,ru,pv,rv = *find(u),*find(v)
+            if pu!=ru:
+                root[pu]= (pv,val*rv/ru)
+
+        def getRatio(u,v):
+            if u in root and v in root:
+                pu,ru,pv,rv = *find(u),*find(v)
+                if pu!=pv:
+                    return -1.0
+                else:
+                    return ru/rv
+            else:
+                return -1.0
+        for (u,v),val in zip(eqns,values): union(u,v,val)        
+        return [getRatio(u,v) for u,v in qrys]
+            
             

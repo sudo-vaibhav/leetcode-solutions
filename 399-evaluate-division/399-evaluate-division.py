@@ -14,7 +14,6 @@ class Solution:
             if parentU!=parentV:
                 root[parentU]= (parentV,val*(ratioV/ratioU))
 
-        @cache
         def getRatio(u,v):
             if u in root and v in root:
                 parentU,ratioU,parentV,ratioV = *find(u),*find(v)

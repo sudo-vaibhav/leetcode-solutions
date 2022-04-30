@@ -14,6 +14,7 @@ class Solution:
             if pu!=ru:
                 root[pu]= (pv,val*rv/ru)
 
+        @cache
         def getRatio(u,v):
             if u in root and v in root:
                 pu,ru,pv,rv = *find(u),*find(v)

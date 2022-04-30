@@ -9,5 +9,5 @@ class Solution:
         ans = []
         while mh:
             count,val = heappop(mh)
-            ans = [*ans,*([val]*(-count))]
+            ans.extend([val]*(-count))
         return "".join(ans)

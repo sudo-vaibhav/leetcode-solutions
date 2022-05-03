@@ -18,5 +18,5 @@ class DiningPhilosophers:
             eat()
             putLeftFork()
             putRightFork()
-            # lf.notify_all()
-            # rf.notify_all()
+            lf.notify_all()
+            rf.notify_all()

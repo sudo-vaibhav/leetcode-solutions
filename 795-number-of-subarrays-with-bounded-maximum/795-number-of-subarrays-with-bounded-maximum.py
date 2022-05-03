@@ -23,14 +23,11 @@ class Solution:
             
             if len(stack)>0:
                 nextGreater[j] = stack[-1]
+                
+            if left<=cur<=right:
+                ls = j - prevGreater[j]
+                rs = nextGreater[j]-j
+                ans+= ls*rs
             stack.append(j)
             
-        
-        for i in range(n):
-            cur = nums[i]
-            if left<=cur<=right:
-                ls = i - prevGreater[i]
-                rs = nextGreater[i]-i
-                ans+= ls*rs
-        
         return ans

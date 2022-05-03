@@ -1,7 +1,7 @@
 class Solution:
     def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
         n,ans = len(nums),0
-        nextGreater = [n for _ in range(n)]
+        # nextGreater = [n for _ in range(n)]
         prevGreater = [-1 for _ in range(n)]
         stack = deque()
 
@@ -18,15 +18,16 @@ class Solution:
         stack = deque()
         for j in range(n-1,-1,-1):
             cur = nums[j]
+            temp = n
             while len(stack)>0 and nums[stack[-1]]<=cur:
                 stack.pop()
             
             if len(stack)>0:
-                nextGreater[j] = stack[-1]
+                temp = stack[-1]
                 
             if left<=cur<=right:
                 ls = j - prevGreater[j]
-                rs = nextGreater[j]-j
+                rs = temp-j
                 ans+= ls*rs
             stack.append(j)
             

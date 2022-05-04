@@ -1,19 +1,27 @@
 class Solution:
-    def setZeroes(self, matrix: List[List[int]]) -> None:
-        m,n = len(matrix),len(matrix[0])
+    def setZeroes(self, mat: List[List[int]]) -> None:
+        m,n = len(mat),len(mat[0])
+        row0 = False
         for i in range(m):
             for j in range(n):
-                if matrix[i][j]==0:
-                    for l in range(n):
-                        if matrix[i][l] != 0:
-                            matrix[i][l] = float("inf")
-                    for l in range(m):
-                        if matrix[l][j] !=0:
-                            matrix[l][j] = float("inf")
-        for i in range(m):
-            for j in range(n):
-                if matrix[i][j]==float("inf"):
-                    matrix[i][j] = 0
+                if mat[i][j]==0:
+                    if i==0: 
+                        row0 = True
+                    else:
+                        mat[i][0] = 0
+                    mat[0][j] = 0
+                    
+        # print(row0,mat)
         
-                
+        for i in range(m-1,0,-1):
+            for j in range(n-1,-1,-1):
+                # if i==0 and row0:
+                #     mat[0][j]=0
+                # else:
+                if mat[0][j]==0 or mat[i][0]==0:
+                    mat[i][j]=0
+        if row0:
+            for j in range(0,n):
+                mat[0][j]=0
+        
         

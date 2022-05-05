@@ -9,6 +9,6 @@ class Solution:
                 ans.append(prev)
                 prev = interval
             else:
-                prev = [min(prev[0],start),max(prev[1],end)]
+                prev = [prev[0],max(prev[1],end)]
         ans.append(prev)
         return ans

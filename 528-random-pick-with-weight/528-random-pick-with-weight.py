@@ -11,5 +11,5 @@ class Solution:
         self.tot = prefix
     def pickIndex(self) -> int:
         val = random.random()*self.tot
-        n = bisect_right(self.arr,val)
+        n = bisect_left(self.arr,val)
         return n        

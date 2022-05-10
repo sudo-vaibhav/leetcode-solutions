@@ -1,27 +1,33 @@
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        m,n=len(matrix),len(matrix[0])
-        top,bottom,left,right=0,m-1,0,n-1        
-        while top<=bottom:
-            mid = top+(bottom-top)//2
-            if target>=matrix[mid][0] and target<=matrix[mid][-1]:
+    def searchMatrix(self, mat: List[List[int]], target: int) -> bool:
+        m,n = len(mat),len(mat[0])
+        l = 0
+        r = m-1
+        row = None
+        while l<=r:
+            guess = l+(r-l)//2
+            minVal,maxVal = mat[guess][0],mat[guess][-1]
+            if minVal<=target<=maxVal:
+                row = guess
                 break
             else:
-                if target<matrix[mid][0]:
-                    bottom=mid-1
+                if target>maxVal:
+                    l = guess+1
                 else:
-                    top=mid+1
-        row = mid
-        while left<=right:
-            mid = left+(right-left)//2
-            if matrix[row][mid]==target:
+                    r = guess-1
+        if row==None:
+            return False
+        
+        l = 0
+        r = n-1
+        while l<=r:
+            guess = l+(r-l)//2
+            if mat[row][guess]==target:
                 return True
+            elif mat[row][guess]<target:
+                l = guess+1
             else:
-                if matrix[row][mid]>target:
-                    right=mid-1
-                else:
-                    left=mid+1
-            
+                r = guess-1
+        
         return False
-    
-    
+        

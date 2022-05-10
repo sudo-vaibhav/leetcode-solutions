@@ -6,8 +6,6 @@ class Solution:
         def powerRecursive(x,n):
             if n==0:
                 return 1
-            if n==1:
-                return x
             if n%2==1:
                 return x*powerRecursive(x,n-1)
             else:

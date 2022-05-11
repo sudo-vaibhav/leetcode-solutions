@@ -14,14 +14,9 @@ class Solution:
             else:
                 ct2-=1
                 ct1-=1
-        def verify(nums, n1):
-            n = len(nums)
-            ct = 0
-            for i in nums:
-                if i==n1:
-                    ct+=1
-            if ct > n//3:
-                ans.add(n1)
-        verify(nums,n1)
-        verify(nums,n2)
+        def verify(num):
+            if nums.count(num)>len(nums)//3:
+                ans.add(num)
+        verify(n1)
+        verify(n2)
         return ans

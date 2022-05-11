@@ -2,6 +2,7 @@ class Solution:
     def countVowelStrings(self, n: int) -> int:
         vowels = ["-","u","o","i","e","a"]
         characters = ["a","e","i","o","u"]
+        @cache
         def solve(char,n):
             if n==1:
                 return vowels.index(char)

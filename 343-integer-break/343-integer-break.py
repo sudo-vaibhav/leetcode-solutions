@@ -8,6 +8,6 @@ class Solution:
                 return 1
             tempans = -inf
             for i in range(1,n+(1 if cnt>0 else 0)):
-                tempans = max(tempans,solve(n-i,cnt+1)*i)
+                tempans = max(tempans,solve(n-i,cnt or True)*i)
             return tempans
-        return solve(n,0)
+        return solve(n,False)

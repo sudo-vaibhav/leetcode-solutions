@@ -1,15 +1,14 @@
 class Solution:
-    
     def countVowelStrings(self, n: int) -> int:
-        vowels = ("a","e","i","o","u")
-        
-        @cache
-        def solve(n,prev):
-            if(n==0): return 1
+        vowels = ["-","u","o","i","e","a"]
+        characters = ["a","e","i","o","u"]
+        def solve(char,n):
+            if n==1:
+                return vowels.index(char)
             else:
-                count = 0
-                for c in vowels:
-                    if c >= prev:count += solve(n-1,c)
-                return count
+                ans = 0
+                for curChar in characters[characters.index(char):]:
+                    ans += solve(curChar,n-1)
+                return ans
+        return solve("a",n)
             
-        return solve(n,"a")

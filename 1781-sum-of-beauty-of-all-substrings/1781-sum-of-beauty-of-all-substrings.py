@@ -1,7 +1,7 @@
 class Solution:
     def beautySum(self, s: str) -> int:
         n = len(s)
-        cnt = [[0]*26 for i in range(n)]
+        cnt = {}
         a = ord("a")
         ans = 0
         
@@ -26,10 +26,10 @@ class Solution:
             cur = s[i]
             if i>0:
                 cnt[i] = list(cnt[i-1])
+            else:
+                cnt[i] = [0]*26
             cnt[i][ord(cur)-a]+=1
             for j in range(-1,i):
                 temp = getBeauty(j,i) 
-                # if temp>0:
-                #     print(j,i,temp,cnt[j],cnt[i])
                 ans+=temp
         return ans

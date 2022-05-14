@@ -1,25 +1,18 @@
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        adj = defaultdict(lambda:defaultdict(int))
+        adj = defaultdict(list)
+        path = deque()
         
         for dep,dest in tickets:
-            adj[dep][dest]+=1
+            heappush(adj[dep],dest)
             
-        def solve(cur,path):
-            path.append(cur)
-            if len(path)==len(tickets)+1:
-                return path
-            else:
-                for dest in sorted(adj[cur].keys()):
-                    if adj[cur][dest]>0:
-                        adj[cur][dest]-=1
-                        temp = solve(dest,path)
-                        if temp!=None:
-                            return temp
-                        adj[cur][dest]+=1
-            path.pop()
+        def solve(cur):            
+            while adj[cur]:
+                dest = heappop(adj[cur])
+                solve(dest)
+            path.appendleft(cur)
 
             
-        return solve("JFK",deque())
-            
+        solve("JFK")
         
+        return path

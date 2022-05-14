@@ -8,10 +8,8 @@ class Solution:
             leftToRight = i%2==0
             for j in range(n):
                 vals.append(board[~i][j if leftToRight else ~j])
-        print(vals)
         vis = set()
         q = deque()
-        
         q.append(1)
         vis.add(1)
         ans = 0

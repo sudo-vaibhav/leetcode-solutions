@@ -3,6 +3,7 @@ class Solution:
         m,n = len(grid),len(grid[0])
         
         moves = [[1,0],[0,1]]
+        
         @cache
         def solve(i,j):
             if grid[i][j]==1:

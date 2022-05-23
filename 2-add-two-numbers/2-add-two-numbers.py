@@ -21,13 +21,12 @@ class Solution(object):
             temp.next = node
             temp = temp.next
             if tot>=10:
-                carry = tot//10
+                carry = 1
             else:
                 carry = 0
             if p1: p1=p1.next
             if p2: p2=p2.next
         if carry:
             temp.next = ListNode(carry)
-            temp = temp.next
                 
         return dummy.next

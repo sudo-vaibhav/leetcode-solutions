@@ -1,23 +1,32 @@
 class Twitter:
 
     def __init__(self):
-        self.tweets = []
+        # self.tweets = []
+        self.time = 0
         self.following = defaultdict(set)
+        self.tweetHeads = defaultdict(lambda : None)
 
     def postTweet(self, userId: int, tweetId: int) -> None:
-        self.tweets.append({
-            "userId":userId,"tweetId":tweetId
-        })
+        tweet = (-self.time,tweetId,self.tweetHeads[userId])
+        self.tweetHeads[userId] = tweet
+        self.time+=1
+
 
     def getNewsFeed(self, userId: int) -> List[int]:
-        n = len(self.tweets)
+        # n = len(self.tweets)
         ans = []
-        for i in range(n-1,-1,-1):
-            cur = self.tweets[i]
-            if cur["userId"] == userId or cur["userId"] in self.following[userId]:
-                ans.append(cur["tweetId"])
-            if len(ans)==10:
-                break
+        
+        heads = []
+        for followedUser in [*self.following[userId],userId]:
+            if self.tweetHeads[followedUser]!=None:
+                heappush(heads,self.tweetHeads[followedUser])
+        
+        while heads and len(ans)<10:
+            cur = heappop(heads)
+            nex = cur[2]
+            ans.append(cur[1])
+            if nex!=None:
+                heappush(heads,nex)
         return ans
         
 

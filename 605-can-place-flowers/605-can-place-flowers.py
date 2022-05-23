@@ -2,7 +2,7 @@ class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
         N = len(flowerbed)
         
-        @cache
+        @lru_cache(maxsize=5)
         def solve(idx):
             if idx>=N:
                 return 0

@@ -13,24 +13,35 @@ class Solution(object):
                 prev = temp
                 temp = nex
             return prev
+
     def reverseKGroup(self, head, k):
         r = head
         l = head
         cnt = 0
         ans = None
         prev = None
-        # while r:
-        while r and cnt<k:
-            prev = r
-            r = r.next        
-            cnt+=1
-        if cnt!=k:
-            return head
-
-        newHead = self.reverse(l,r)
-        if not ans:
-            ans = newHead
-        l.next = self.reverseKGroup(r,k)
-        cnt=0
-        
+        prevStep = None
+        while r:
+            while r and cnt<k:
+                prev = r
+                r = r.next        
+                cnt+=1
+            if cnt!=k:
+                if prevStep:
+                    prevStep.next = l
+                else:
+                    return head
+                # pass
+                # return head
+            else:
+                newHead = self.reverse(l,r)
+                if prevStep:
+                    prevStep.next = newHead
+                else:
+                    ans = newHead
+                prevStep = l
+            l = r
+            cnt = 0
+            
+        # l.next = self.reverseKGroup(r,k)        
         return ans

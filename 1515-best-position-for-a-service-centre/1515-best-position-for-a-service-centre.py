@@ -2,6 +2,7 @@ class Solution(object):
     def getMinDistSum(self, points):
         eps = 10**(-6)
         
+        @cache
         def getDist(x,y):
             res = 0
             for u,v in points:
@@ -9,6 +10,7 @@ class Solution(object):
                 res += ( dx**2 + dy**2 )**0.5
             return res
         
+        @cache
         def getOptimalDist(x):
             ly,ry = 0,100
             while ry-ly>eps:
@@ -17,11 +19,8 @@ class Solution(object):
                 d1,d2 = getDist(x,m1y),getDist(x,m2y)
                 if d1<d2:
                     ry = m2y
-                elif d1>d2:
+                else : 
                     ly = m1y
-                else:
-                    ly = m1y
-                    ry = m2y
             return getDist(x,ly)
         
         def getXY(points):
@@ -32,11 +31,8 @@ class Solution(object):
                 optimalDist1,optimalDist2 = getOptimalDist(m1x),getOptimalDist(m2x)
                 if optimalDist1<optimalDist2:
                     rx = m2x
-                elif optimalDist1>optimalDist2:
-                    lx = m1x
                 else:
                     lx = m1x
-                    rx = m2x
             return getOptimalDist(lx)
         
         return getXY(points)

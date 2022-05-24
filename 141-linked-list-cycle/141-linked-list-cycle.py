@@ -11,8 +11,6 @@ class Solution(object):
             slow = slow.next
             fast = fast.next.next
             if fast==slow:
-                break
-        else:
-            return False
-        return True
+                return True
+        return False
         

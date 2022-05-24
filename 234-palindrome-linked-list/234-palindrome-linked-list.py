@@ -6,13 +6,7 @@
 class Solution(object):
     def isPalindrome(self, head):
         slow,fast = head,head
-        prev = None
-        
-#         if not head or not head.next:
-#             return True
-        
         while fast and fast.next:
-            prev = slow
             slow = slow.next
             fast = fast.next.next
         p1 = head

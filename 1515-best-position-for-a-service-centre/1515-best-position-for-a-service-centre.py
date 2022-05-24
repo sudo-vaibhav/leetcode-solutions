@@ -18,9 +18,9 @@ class Solution(object):
                 m1y,m2y = ly+deltaY,ry-deltaY
                 d1,d2 = getDist(x,m1y),getDist(x,m2y)
                 if d1<d2:
-                    ry = m2y
+                    ry = m2y-eps
                 else : 
-                    ly = m1y
+                    ly = m1y+eps
             return getDist(x,ly)
         
         def getXY(points):
@@ -30,9 +30,9 @@ class Solution(object):
                 m1x, m2x = lx+deltaX, rx-deltaX
                 optimalDist1,optimalDist2 = getOptimalDist(m1x),getOptimalDist(m2x)
                 if optimalDist1<optimalDist2:
-                    rx = m2x
+                    rx = m2x-eps
                 else:
-                    lx = m1x
+                    lx = m1x+eps
             return getOptimalDist(lx)
         
         return getXY(points)

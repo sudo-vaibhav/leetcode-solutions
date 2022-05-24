@@ -17,12 +17,11 @@ class Solution(object):
                 d1,d2 = getDist(x,m1y),getDist(x,m2y)
                 if d1<d2:
                     ry = m2y
-                else : #d1>d2:
+                elif d1>d2:
                     ly = m1y
-                # else:
-                #     ly = m1y
-                #     ry = m2y
-            # print("got y",ly)
+                else:
+                    ly = m1y
+                    ry = m2y
             return getDist(x,ly)
         
         def getXY(points):
@@ -33,13 +32,11 @@ class Solution(object):
                 optimalDist1,optimalDist2 = getOptimalDist(m1x),getOptimalDist(m2x)
                 if optimalDist1<optimalDist2:
                     rx = m2x
-                else:# optimalDist1>optimalDist2:
+                elif optimalDist1>optimalDist2:
                     lx = m1x
-                # else:
-                #     lx = m1x
-                #     rx = m2x
-            # print("got x",lx)
+                else:
+                    lx = m1x
+                    rx = m2x
             return getOptimalDist(lx)
         
-        # print("val check",getDist(0.99999999999,0.999999999999))
         return getXY(points)

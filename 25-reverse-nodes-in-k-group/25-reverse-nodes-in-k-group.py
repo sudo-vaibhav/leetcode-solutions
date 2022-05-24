@@ -11,7 +11,7 @@ class Solution(object):
 
     def reverseKGroup(self, head, k):
         l,r = head,head
-        ans,prevStepLastNode = None,None
+        ans,prevStepLastNode = head,None
         while r:
             cnt = 0
             while r and cnt<k:
@@ -20,9 +20,7 @@ class Solution(object):
             if cnt!=k:
                 if prevStepLastNode:
                     prevStepLastNode.next = l
-                    return ans
-                else:
-                    return head
+                return ans
             else:
                 newHead = self.reverse(l,r)
                 if prevStepLastNode:

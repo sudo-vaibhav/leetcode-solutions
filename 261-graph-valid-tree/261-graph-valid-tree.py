@@ -7,8 +7,7 @@ class Solution:
         for u,v in edges:
             adj[u].append(v)
             adj[v].append(u)
-        # print(adj)
-        ans = True
+            
         def dfs(node,parent):
             for v in adj[node]:
                 if v in vis:
@@ -23,5 +22,4 @@ class Solution:
             return True
             
         vis.add(0)          
-        temp = dfs(0,-1)
-        return temp and len(vis)==n
+        return dfs(0,-1) and len(vis)==n

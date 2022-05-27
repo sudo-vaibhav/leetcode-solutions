@@ -3,38 +3,31 @@
 from heapq import heappush,heappop
 
 
-# class Node:
-#     def __init__(self, d):
-#         self.data=d
-#         self.next=None
-#         self.bottom=None
-#     def __lt__(self,other):
-#         return self.data<other.data
 
 def flatten(root):
     pointers = []
     
     temp = root
-    ans = Node(0)
-    temp2 = ans
+    dummy = Node(0)
     i=0
     while temp:
         heappush(pointers,(temp.data,i,temp))    
         temp = temp.next
         i+=1
-    
+        
+    temp = dummy
     
     while pointers:
         cur,_,curNode = heappop(pointers)
-        temp2.bottom = curNode
-        temp2 = curNode
+        temp.bottom = curNode
+        temp = curNode
         nex = curNode.bottom
         if nex!=None:
             heappush(pointers,(nex.data,i,nex))
             i+=1
         curNode.bottom = None
     
-    return ans.bottom
+    return dummy.bottom
     
 #{ 
 #  Driver Code Starts

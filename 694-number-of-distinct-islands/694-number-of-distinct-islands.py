@@ -9,11 +9,11 @@ class Solution:
             if 0<=i<m and 0<=j<n and grid[i][j]==land and not seen[i][j]:
                 seen[i][j]=True
                 curIsland.add((i-initI,j-initJ))
-                dfs(i+1,j,initI,initJ)
-                dfs(i-1,j,initI,initJ)
-                dfs(i,j+1,initI,initJ)
-                dfs(i,j-1,initI,initJ)
-                
+                moves = [0,1,0,-1,0]
+                for di,dj in zip(moves[1:],moves[:-1]):
+                    I,J = di+i,dj+j                    
+                    dfs(I,J,initI,initJ)
+                    
         for i in range(m):
             for j in range(n):
                 curIsland = set()

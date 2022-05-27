@@ -3,6 +3,7 @@ class Solution:
         class UF:
             def __init__(self):
                 self.parent = dict()
+                self.ranks = defaultdict(int)
             def find(self,v):
                 if v not in self.parent:
                     return v
@@ -15,9 +16,14 @@ class Solution:
                 if pu==pv:
                     return False
                 else:
-                    mi = min(pu,pv)
-                    other = pu if pu!=mi else pv
-                    self.parent[other] = mi
+                    puRank,pvRank = self.ranks[pu],self.ranks[pv]
+                    sub,sup = pu,pv
+                    if puRank>pvRank:
+                        sub,sup = sup,sub
+                    
+                    if puRank==pvRank:
+                        self.ranks[sup]+=1
+                    self.parent[sub] = sup
                     return True
             
         uf = UF()

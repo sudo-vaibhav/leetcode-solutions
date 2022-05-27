@@ -22,7 +22,7 @@ class Solution:
 		for i in range (f,10001):
 		    x=(n*i)//d
 		    if mt.gcd(x,i)==1:
-		        if (1.0*x/i>1.0*num/den):
+		        if (x/i>num/den):
 		            num=x
 		            den=i
 	    return (num,den)

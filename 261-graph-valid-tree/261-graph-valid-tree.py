@@ -9,6 +9,7 @@ class Solution:
             adj[v].append(u)
             
         def dfs(node,parent):
+            vis.add(node)  
             for v in adj[node]:
                 if v in vis:
                     if v!=parent:
@@ -20,6 +21,5 @@ class Solution:
                     if not dfs(v,node):
                         return False
             return True
-            
-        vis.add(0)          
+
         return dfs(0,-1) and len(vis)==n

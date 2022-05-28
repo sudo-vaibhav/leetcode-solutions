@@ -4,8 +4,6 @@ class Solution:
         ans = 0
         @cache
         def highestInRight(i):
-            if i>n-1:
-                return 0
             if i==n-1:
                 return height[i]
             else:

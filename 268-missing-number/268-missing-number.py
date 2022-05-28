@@ -19,9 +19,4 @@ class Solution:
         
         temp = (n*(n+1))//2
         diff = temp-S
-        if diff==0:
-            return 0
-        else:
-            return diff
-        
-        return n
+        return diff

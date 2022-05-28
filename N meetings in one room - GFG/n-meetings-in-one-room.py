@@ -7,14 +7,14 @@ class Solution:
     def maximumMeetings(self,n,start,end):
         meets = []
         for i in range(len(start)):
-            meets.append((end[i],start[i]))
+            meets.append({"start":start[i],"end":end[i]})
         
-        meets.sort()
+        meets.sort(key=lambda x:(x["end"]))
         prev = meets[0]
         ans = 1
         
         for meet in meets[1:]:
-            if prev[0]<meet[1]:
+            if prev["end"]<meet["start"]:
                 prev = meet
                 ans+=1
             else:

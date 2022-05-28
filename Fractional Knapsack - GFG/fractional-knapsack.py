@@ -3,19 +3,13 @@
 class Solution:    
     #Function to get the maximum total value in the knapsack.
     def fractionalknapsack(self, W,Items,n):
-        items = []
-        for Item in Items:
-            items.append((Item.value/Item.weight,Item.value,Item.weight))
-        items.sort(reverse=True)
-        
+        Items.sort(key=lambda x:x.value/x.weight,reverse=True)
         ans = 0
-        i=0
-        while i<n and W>0:
-            _,val,weight = items[i]
+        for item in Items:
+            value,weight = item.value,item.weight
             maxCanTake = min(weight,W)
             W-=maxCanTake
-            ans += val*(maxCanTake/weight)
-            i+=1
+            ans += value*(maxCanTake/weight)
         return ans
         
 

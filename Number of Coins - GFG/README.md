@@ -1,5 +1,5 @@
 # Number of Coins
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a value <strong>V</strong> and array <strong>coins[]</strong> of size <strong>M</strong>, the task is to make the change for <strong>V</strong> cents, given that you have an infinite supply of each of coins{coins<sub>1</sub>, coins<sub>2</sub>, ..., coins<sub>m</sub>} valued coins. Find the minimum number of coins to make the change. If not possible to make change then return -1.</span></p>
 

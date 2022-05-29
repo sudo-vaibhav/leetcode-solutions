@@ -1,22 +1,7 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        # i = 0
         n = len(nums)
-#         for i in range(n):
-            
-#             while 0<=nums[i]<n and nums[i]!=i and nums[i]!=nums[nums[i]]:
-#                 v = nums[i]
-#                 nums[v],nums[i] = v,nums[v]
-        
-#         for i in range(n):
-#             if nums[i]!=i:
-#                 return i
-        
-#         return n
-
-
-        S = sum(nums)
-        
         temp = (n*(n+1))//2
+        S = sum(nums)
         diff = temp-S
         return diff

@@ -5,24 +5,35 @@ class Solution:
     
     
 	def minCoins(self, coins, N, V):
-	    coins.sort(reverse=True)
-		@lru_cache(maxsize=None)
-		def solve(idx,target):
-		    if target==0:
-		        return 0
-		    if target<0:
-		        return inf
-		    if idx==N:
-		        if target==0:
-		            return 0
-		        else:return inf
-		    else:
-		        cur = coins[idx]
-		        return min(1+solve(idx,target-cur),solve(idx+1,target))
-		
-		ans = solve(0,V) 
-		return -1 if ans==inf else ans 
-		# code here
+    	    
+        # table[i] will be storing the minimum 
+        # number of coins required for i value. 
+        # So table[V] will have result
+        table = [0 for i in range(V + 1)]
+    
+        # Base case (If given value V is 0)
+        table[0] = 0
+    
+        # Initialize all table values as Infinite
+        for i in range(1, V + 1):
+            table[i] = inf
+            
+        # Compute minimum coins required 
+        # for all values from 1 to V
+        for i in range(1, V + 1):
+            
+            # Go through all coins smaller than i
+            for j in range(m):
+                if (coins[j] <= i):
+                    sub_res = table[i - coins[j]]
+                    if (sub_res != inf and 
+                        sub_res + 1 < table[i]):
+                        table[i] = sub_res + 1
+        
+        if table[V] == inf:
+            return -1
+      
+        return table[V]
 
 #{ 
 #  Driver Code Starts

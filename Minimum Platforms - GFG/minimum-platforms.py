@@ -22,15 +22,27 @@ class Solution:
 
         # return ans
         
-        i,j=0,0
-        times = sorted([(x,"arr") for x in arr]+[(x,"dep") for x in dep])
-        cur,ans= 0,0
-        for time,timeType in times:
-            if timeType=="arr":
+        # times = sorted([(x,"arr") for x in arr]+[(x,"dep") for x in dep])
+        # cur,ans= 0,0
+        # for time,timeType in times:
+        #     if timeType=="arr":
+        #         cur+=1
+        #     else:
+        #         cur-=1
+        #     ans = max(ans,cur)
+        arr.sort()
+        dep.sort()
+        arrive,leave = 0,0
+        ans,cur = 0,0
+        while arrive<n:
+            if arr[arrive]<=dep[leave]:
                 cur+=1
+                arrive+=1
             else:
+                leave+=1
                 cur-=1
             ans = max(ans,cur)
+                
         return ans
                 
         

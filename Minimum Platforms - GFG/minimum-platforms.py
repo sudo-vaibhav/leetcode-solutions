@@ -14,10 +14,10 @@ class Solution:
         ans = 0
         for tr in trains:
             if len(plats)==0 or plats[0][depart]>=tr[0]:
-                heappush(plats,(tr[1],tr[0]))
+                pass #
             else:
                 heappop(plats)
-                heappush(plats,(tr[1],tr[0]))
+            heappush(plats,(tr[1],tr[0]))
             ans = max(ans,len(plats))
 
         return ans

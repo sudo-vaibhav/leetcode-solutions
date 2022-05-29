@@ -30,19 +30,20 @@ class Solution:
         #     else:
         #         cur-=1
         #     ans = max(ans,cur)
-        arr.sort()
-        dep.sort()
-        arrive,leave = 0,0
-        ans,cur = 0,0
-        while arrive<n:
-            if arr[arrive]<=dep[leave]:
-                cur+=1
-                arrive+=1
-            else:
-                leave+=1
-                cur-=1
+        trains = [0 for i in range(2361)]
+        
+        for time in arr:
+            trains[time]+=1
+            
+        for time in dep:
+            trains[time+1]-=1
+        
+        cur,ans = trains[0],trains[0]
+        for i in range(1,len(trains)):
+            cur += trains[i]
             ans = max(ans,cur)
-                
+            
+        
         return ans
                 
         

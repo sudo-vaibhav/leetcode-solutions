@@ -5,22 +5,35 @@ class Solution:
     #railway station such that no train waits.
     def minimumPlatform(self,n,arr,dep):
         
-        depart,arrive = 0,1 
-        trains = [(arr[i],dep[i]) for i in range(n)]
-        trains.sort()
+        # depart,arrive = 0,1 
+        # trains = [(arr[i],dep[i]) for i in range(n)]
+        # trains.sort()
         
-        plats = []
+        # plats = []
         
-        ans = 0
-        for tr in trains:
-            if len(plats)==0 or plats[0][depart]>=tr[0]:
-                pass #
-            else:
-                heappop(plats)
-            heappush(plats,(tr[1],tr[0]))
-            ans = max(ans,len(plats))
+        # ans = 0
+        # for tr in trains:
+        #     if len(plats)==0 or plats[0][depart]>=tr[0]:
+        #         pass # cant pop anything
+        #     else:
+        #         heappop(plats)
+        #     heappush(plats,(tr[1],tr[0]))
+        #     ans = max(ans,len(plats))
 
+        # return ans
+        
+        i,j=0,0
+        times = sorted([(x,"arr") for x in arr]+[(x,"dep") for x in dep])
+        cur,ans= 0,0
+        for time,timeType in times:
+            if timeType=="arr":
+                cur+=1
+            else:
+                cur-=1
+            ans = max(ans,cur)
         return ans
+                
+        
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3

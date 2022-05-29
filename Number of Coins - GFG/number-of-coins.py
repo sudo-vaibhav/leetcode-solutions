@@ -5,47 +5,16 @@ class Solution:
     
     
 	def minCoins(self, coins, N, V):
-    	    
-        # table[i] will be storing the minimum 
-        # number of coins required for i value. 
-        # So table[V] will have result
-        # table = [0 for i in range(V + 1)]
-    
-        # # Base case (If given value V is 0)
-        # table[0] = 0
-    
-        # # Initialize all table values as Infinite
-        # for i in range(1, V + 1):
-        #     table[i] = inf
-            
-        # # Compute minimum coins required 
-        # # for all values from 1 to V
-        # for i in range(1, V + 1):
-            
-        #     # Go through all coins smaller than i
-        #     for j in range(m):
-        #         if (coins[j] <= i):
-        #             sub_res = table[i - coins[j]]
-        #             if (sub_res != inf and 
-        #                 sub_res + 1 < table[i]):
-        #                 table[i] = sub_res + 1
-        
-        # if table[V] == inf:
-        #     return -1
-        
-      
-        # return table[V]
         @lru_cache(maxsize=None)
-        def solve(target):
+        def minCoinCount(target):
             if target==0: return 0
-            if target<0: return inf
+            # if target<0: return inf
             ans = inf
             for coin in coins:
                 if coin<=target:
-                    ans = min(ans,1+solve(target-coin))
+                    ans = min(ans,1+minCoinCount(target-coin))
             return ans
-        
-        res = solve(V)
+        res = minCoinCount(V)
         return -1 if res==inf else res
 
 #{ 

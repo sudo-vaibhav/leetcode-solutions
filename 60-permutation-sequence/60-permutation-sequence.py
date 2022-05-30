@@ -4,8 +4,7 @@ class Solution:
         ans = []
         while len(nums)>0:
             N = len(nums)
-            totalPerms = factorial(N)
-            perHead = totalPerms//N
+            perHead = factorial(N-1)
             numPickedIdx = (k-1)//perHead
             pickedNum = nums[numPickedIdx]
             ans.append(str(pickedNum))

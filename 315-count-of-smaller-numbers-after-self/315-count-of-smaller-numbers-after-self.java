@@ -46,6 +46,15 @@ class STNode{
 //         return ans;
 //     }
 // };
+
+class Pair{
+    public int num;
+    public int idx;
+    public Pair(int num, int idx){
+        this.num = num;
+        this.idx = idx;
+    }
+}
 class Solution {
     
     List<STNode> st;
@@ -84,44 +93,44 @@ class Solution {
         }
     }
     
+    
     public List<Integer> countSmaller(int[] nums) {
         int n = nums.length;
-        var NUMS = new ArrayList<Integer>();
-        for(var num:nums){
-            NUMS.add(num);
+        var cc = new ArrayList<Pair>();
+        for(int i=0;i<n;i++){
+            cc.add(new Pair(nums[i],i));
         }
-        Collections.sort(NUMS);
-        // sort(NUMS.begin(),NUMS.end());
-        int maxi = 1;
-        int i = 1;
-        var cc = new TreeMap<Integer,Integer>();
         
-        for(var num:NUMS){
-            if(!cc.containsKey(num)){
-                cc.put(num,i);
-                i+=1;
+        var comp = new Comparator<Pair>(){
+            public int compare(Pair p1,Pair p2){
+                if (p1.num<p2.num){
+                    return -1;
+                }
+                else if(p1.num>p2.num){
+                    return 1;
+                }
+                return 0;
             }
+        };
+        Collections.sort(cc,comp);
+        // sort(NUMS.begin(),NUMS.end());
+        for(int i=0;i<n;i++){
+            nums[cc.get(i).idx] = i+1;
         }
         
-        for(int j=0;j<n;j++){
-            nums[j]=cc.get(nums[j]);
-            maxi = Math.max(maxi,nums[j]);
-        } 
-
-        int N = nums.length;
         
         st = new ArrayList<STNode>();
         // 4*N,STNode());
-        for(i=0;i<4*N;i++){
+        for(int i=0;i<4*n;i++){
             st.add(new STNode(0));
         }
         
         var ans = new ArrayList<Integer>();
         
-        for(i=n-1;i>=0;i--){
+        for(int i=n-1;i>=0;i--){
             var cur = nums[i];
-            ans.add(query(1,1,N,cur).count);            
-            update(1,1,N,cur);
+            ans.add(query(1,1,n,cur).count);            
+            update(1,1,n,cur);
         }
         Collections.reverse(ans);
         return ans;

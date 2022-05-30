@@ -25,7 +25,7 @@ def flatten(root):
         if nex!=None:
             heappush(pointers,(nex.data,i,nex))
             i+=1
-        curNode.bottom = None
+        # curNode.bottom = None
     
     return dummy.bottom
     

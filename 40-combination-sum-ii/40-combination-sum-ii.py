@@ -1,7 +1,7 @@
 class Solution(object):
     def combinationSum2(self, candidates, target):
         ctr = Counter(candidates)
-        uniques = list(ctr.keys())
+        uniques = list(sorted(ctr.keys()))
         N,ans = len(uniques),[]
         def solve(idx,target,path=[]):
             # if idx==N:
@@ -11,8 +11,8 @@ class Solution(object):
                 if idx>=N:return
                 cur = uniques[idx]
                 for pickCount in range(0,ctr[cur]+1):
-                    if pickCount*cur<=target:
-                        solve(idx+1,target-pickCount*cur,path+[cur]*pickCount)
+                    if pickCount*cur>target:break
+                    solve(idx+1,target-pickCount*cur,path+[cur]*pickCount)
         solve(0,target,[])
         return ans
     

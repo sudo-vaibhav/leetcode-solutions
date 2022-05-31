@@ -11,7 +11,7 @@ class TrieNode{
 
 class Solution {
     TrieNode* root;
-    int trieSize;    
+    unsigned int trieSize;    
     void insertTrie(deque<char>& num){
         auto temp = root;
         for(auto& cur:num){
@@ -31,16 +31,14 @@ public:
     bool hasAllCodes(string s, int k) {
         root = new TrieNode();
         trieSize = 0;
-        int n = s.size();
+        auto n = s.size();
         deque<char> window;
-        for (int i = 0; i < n; i++)
+        for (auto i = 0; i < n; i++)
         {
             window.push_back(s[i]);
             if (window.size() == k)
             {
-                // if(!searchTrie(window)){
                 insertTrie(window);
-                // }
             }
             if (i >= k - 1)
             {
@@ -48,6 +46,6 @@ public:
             }
         }
 
-        return trieSize==pow(2,k);
+        return trieSize==1<<k;
     }
 };

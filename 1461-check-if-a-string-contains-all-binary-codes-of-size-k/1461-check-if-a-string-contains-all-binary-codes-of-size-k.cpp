@@ -11,7 +11,7 @@ class TrieNode{
 class Solution {
     TrieNode* root;
     int trieSize;
-    bool searchTrie(string& num){
+    bool searchTrie(deque<char>& num){
         auto temp = root;
         for(auto& cur:num){
             if(temp->children[cur-'0']==NULL){
@@ -24,7 +24,7 @@ class Solution {
         return temp->hasNum;
     }
     
-    void insertTrie(string& num){
+    void insertTrie(deque<char>& num){
         auto temp = root;
         for(auto& cur:num){
             if(temp->children[cur-'0']==NULL){
@@ -42,10 +42,10 @@ public:
         root = new TrieNode();
         trieSize = 0;
         int n = s.size();
-        string window = "";
+        deque<char> window;
         for (int i = 0; i < n; i++)
         {
-            window += string(1, s[i]);
+            window.push_back(s[i]);
             if (window.size() == k)
             {
                 if(!searchTrie(window)){
@@ -54,7 +54,7 @@ public:
             }
             if (i >= k - 1)
             {
-                window.erase(window.begin());
+                window.pop_front();
             }
         }
 

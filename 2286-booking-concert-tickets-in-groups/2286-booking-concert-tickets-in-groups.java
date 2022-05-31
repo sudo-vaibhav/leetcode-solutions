@@ -51,10 +51,13 @@ class BookMyShow {
     }
     
     public int[] gatherQuery(int id, int l, int r, int seatsNeeded, int maxRow){
+//         this first bit of if check is not something i have seen before, generally we are able to do early return 
+//         in conditions like l<=lq<=rq<=r , but here max of segment is used to do early return (that too only in less than seatsNeeded case)
+//         for maxi>=seatsNeeded case, you still need to query further \U0001f635
         if(segTree[id].maxi<seatsNeeded || maxRow<l){
             return new int[0];
         }
-        // if()
+        
         if(l==r){
             if (this.segTree[id].total>=seatsNeeded){
                 var res = new int[2];

@@ -31,6 +31,8 @@ public:
         root = new TrieNode();
         trieSize = 0;
         const auto n = s.size();
+        int maxDistinctPossible = n-k+1;
+        if(pow(2,k)>maxDistinctPossible) return false;
         deque<char> window;
         for (auto i = 0; i < n; i++)
         {

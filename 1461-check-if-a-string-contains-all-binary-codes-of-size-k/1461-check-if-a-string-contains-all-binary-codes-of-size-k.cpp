@@ -27,11 +27,10 @@ class Solution {
     }
     
 public:
-    
     bool hasAllCodes(string s, int k) {
         root = new TrieNode();
         trieSize = 0;
-        auto n = s.size();
+        const auto n = s.size();
         deque<char> window;
         for (auto i = 0; i < n; i++)
         {

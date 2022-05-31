@@ -32,8 +32,10 @@ class Solution {
             }
             temp = temp->children[cur-'0'];
         }
-        temp->hasNum = true;
-        trieSize++;
+        if(!temp->hasNum){        
+            temp->hasNum = true;
+            trieSize++;
+        }
     }
     
 public:
@@ -48,9 +50,9 @@ public:
             window.push_back(s[i]);
             if (window.size() == k)
             {
-                if(!searchTrie(window)){
-                    insertTrie(window);
-                }
+                // if(!searchTrie(window)){
+                insertTrie(window);
+                // }
             }
             if (i >= k - 1)
             {

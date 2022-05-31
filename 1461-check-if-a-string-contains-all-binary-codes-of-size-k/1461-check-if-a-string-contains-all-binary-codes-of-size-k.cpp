@@ -1,29 +1,17 @@
 class TrieNode{
     public:
-    vector<TrieNode*> children;
+    TrieNode* children[2];
     bool hasNum;
     TrieNode(){
-        this->children = {NULL,NULL};    
+        this->children[0]=NULL;
+        this->children[1]=NULL;
         this->hasNum = false;
     }
 };
 
 class Solution {
     TrieNode* root;
-    int trieSize;
-    bool searchTrie(deque<char>& num){
-        auto temp = root;
-        for(auto& cur:num){
-            if(temp->children[cur-'0']==NULL){
-                return false;
-            }
-            else{
-                temp = temp->children[cur-'0'];
-            }
-        }
-        return temp->hasNum;
-    }
-    
+    int trieSize;    
     void insertTrie(deque<char>& num){
         auto temp = root;
         for(auto& cur:num){

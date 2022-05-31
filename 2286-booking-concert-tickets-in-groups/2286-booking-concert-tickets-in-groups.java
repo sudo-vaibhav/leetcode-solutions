@@ -1,3 +1,17 @@
+// note to self: 
+// generally range updates are done when multiple leaf nodes are to be changed in a segment tree
+// and this range update problem by itself is not very optimal
+// this is where concept of lazy propogation helps and makes range update query logarithmic
+// but in order to do lazy propogation, one needs to be able to efficiently recompute the current node using the lazy attribute
+// in the push method, which sadly cannot be done for attributes maxi of this problem as we cant know what will be the new maxi value after lazy propogation 
+// adjustment using the lazy attribute.
+
+// so here we have to manually do point by point updates in case of a scatter operation, and to be able to do that with some degree of efficiency
+// we keep an extra array tracking current available seats in each row apart from the segment tree array to formulate our commands properly to be given 
+// to segment tree for point update
+
+// also we can use a more easy to process update, instead of asking tree to reduce values of maxi and total itself by smartly recursing, we adopted
+// a very similar point update query which just sets value in given row to provided value
 
 class BookMyShow {
 
@@ -126,9 +140,7 @@ class BookMyShow {
                 update(1,0,n-1,row,this.availableSeats[row]-maxCanGet);
                 k-=maxCanGet;
             }
-        }
-        
-        // scatterUpdate(1,0,n-1,k);
+        }        
         return true;
     }
 }

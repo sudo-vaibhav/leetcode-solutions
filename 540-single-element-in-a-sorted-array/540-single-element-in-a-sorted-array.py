@@ -3,12 +3,10 @@ class Solution:
         l,r = 0,len(nums)-1
 #         if all were appearing twice, first occurence of num occurs in even position
 #         and second occurence occurs in odd position
-        if len(nums)==1:return nums[0]
-    
+        # if len(nums)==1:return nums[0]
         while l<=r:
             mid = l+(r-l)//2
             cur = nums[mid]
-            
             if mid>0 and nums[mid-1]==cur:
 #                 this is second occurence
                 if mid%2==0:

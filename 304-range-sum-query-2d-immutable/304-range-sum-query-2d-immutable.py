@@ -8,7 +8,8 @@ class NumMatrix:
         for col in range(self.n):
             for row in range(self.m):
                 self.pSums[col].append(mat[row][col]+self.pSums[col][-1])
-        
+    
+    @cache
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         ans = 0
         for col in range(col1,col2+1):

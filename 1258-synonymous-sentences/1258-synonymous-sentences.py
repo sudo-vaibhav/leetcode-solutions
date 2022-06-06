@@ -30,23 +30,22 @@ class Solution:
             wordBank.add(w2)
             uf.union(w1,w2)
         
-        for word in wordBank:
-            uf.find(word)
-        prev = [""]
-        for word in sent:
-            base = uf.find(word)
-            candidates = []
-            for w in wordBank:
-                if uf.find(w)==base:
-                    # print(w,base)
-                    candidates.append(w)
-            candidates.sort()
-            cur = []
-            for cand in candidates:
-                for temp in prev:
-                    if temp=="":
-                        cur.append(cand)
-                    else:
-                        cur.append(temp+" "+cand)
-            prev = cur
-        return sorted(prev)
+        # for word in wordBank:
+        #     uf.find(word)
+        ans = []
+        def solve(idx,path=[]):
+            if idx==len(sent):
+                ans.append(" ".join(path))
+            else:
+                base = uf.find(sent[idx])
+                candidates = []
+                for w in wordBank:
+                    if uf.find(w)==base:
+                        # print(w,base)
+                        candidates.append(w)
+                candidates.sort()
+                for w in candidates:
+                    solve(idx+1,path+[w])
+        solve(0)
+        
+        return ans

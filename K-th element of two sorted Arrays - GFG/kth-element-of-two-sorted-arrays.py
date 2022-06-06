@@ -2,6 +2,9 @@
 from math import inf
 class Solution:
     def kthElement(self,  arr1, arr2, n, m, k):
+        if n>m:
+            n,m = m,n
+            arr1,arr2 = arr2,arr1
         l,r = 0,n
         
         while l<=r:

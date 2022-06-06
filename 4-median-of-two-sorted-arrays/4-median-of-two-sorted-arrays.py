@@ -8,12 +8,11 @@ class Solution:
         while l<=r:
             takenFromFirst = l+(r-l)//2
             takenFromSecond = onLeft - takenFromFirst
-            # print(takenFromFirst,takenFromSecond)
             
             if takenFromSecond>n:
                 l = takenFromFirst+1
                 continue
-            if takenFromSecond<0:
+            elif takenFromSecond<0:
                 r = takenFromFirst-1
                 continue
                 

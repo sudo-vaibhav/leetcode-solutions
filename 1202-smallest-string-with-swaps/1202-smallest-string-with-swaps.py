@@ -11,8 +11,7 @@ class Solution:
                     dfs(i)
                     
         for u,v in pairs:
-            adj[u].append(v)
-            adj[v].append(u)
+            adj[u].append(v),adj[v].append(u)
             
         for i in range(len(s)):
             if i not in vis:

@@ -1,7 +1,6 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         visited = set()
-#         distance , vtx
         distances = [inf for _ in points]
         distances[0] = 0
         parent = [-1 for _ in points]
@@ -24,10 +23,6 @@ class Solution:
                         distances[i] = temp
                         heappush(pq,(temp,i))
                         parent[i] = pIdx
-            # print("picked",points[minIdx],minDist)
-            # ans+=minDist
-        # print(distances)
-        # print(parent)
         ans = 0
         for i in range(len(points)):
             if parent[i]!=-1:

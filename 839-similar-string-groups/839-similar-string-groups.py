@@ -25,7 +25,6 @@ class Solution:
             
         N = len(strs)
         uf = UF(N)
-        
         def comp(s1,s2):
             n = 0
             for i in range(len(s1)):
@@ -37,6 +36,6 @@ class Solution:
         
         for i in range(N):
             for j in range(i+1,N):
-                if comp(list(strs[i]),list(strs[j])):
+                if comp(strs[i],strs[j]):
                     uf.union(i,j)
         return uf.sz

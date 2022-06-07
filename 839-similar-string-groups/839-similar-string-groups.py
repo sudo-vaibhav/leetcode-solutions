@@ -5,6 +5,7 @@ class Solution:
         class UF:
             def __init__(self,n):
                 self.parent = [i for i in range(n)]
+                self.size = [1 for i in range(n)]
                 self.sz = n
             
             def union(self,u,v):
@@ -12,7 +13,13 @@ class Solution:
                 if pu==pv:
                     return False
                 else:
-                    self.parent[pu]=pv
+                    if self.size[pu]<self.size[pv]:
+                        self.parent[pu]=pv
+                    elif self.size[pu]>self.size[pv]:
+                        self.parent[pv]=pu
+                    else:
+                        self.parent[pu]=pv
+                        self.size[pv]+=1
                     self.sz-=1
                     return True
             

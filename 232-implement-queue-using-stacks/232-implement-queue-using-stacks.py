@@ -9,14 +9,14 @@ class MyQueue:
         self.st1.append(x)
 
     def pop(self) -> int:
-        if len(self.st2)==0:
-            while len(self.st1)!=0:
+        if not self.st2:
+            while self.st1:
                 self.st2.append(self.st1.pop())
         return self.st2.pop()
     
     def peek(self) -> int:
-        if len(self.st2)==0:
-            while len(self.st1)!=0:
+        if not self.st2:
+            while self.st1:
                 self.st2.append(self.st1.pop())
         return self.st2[-1]
 

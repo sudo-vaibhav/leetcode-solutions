@@ -32,7 +32,8 @@ class Solution:
                         if c1 in adj[c2]:
                             return ""
                         else:
-                            adj[c1].append(c2)
+                            if c2 not in adj[c1]:
+                                adj[c1].append(c2)
                             break
                 else:
                     if len(cur)>len(nex): return ""

@@ -14,7 +14,7 @@ class Solution:
                     if j<len(cur):
                         c1 = cur[j]
                         if c1 not in adj:
-                            adj[c1] = set()
+                            len(adj[c1]) 
 
                     if j<len(nex):
                         c2 = nex[j]                    
@@ -22,17 +22,6 @@ class Solution:
                             adj[c2] = set()
 
                 for j in range(t):
-    #                 c1,c2 = None,None
-    #                 if j<len(cur):
-    #                     c1 = cur[j]
-    #                     if c1 not in adj:
-    #                         adj[c1] = set()
-
-    #                 if j<len(nex):
-    #                     c2 = nex[j]                    
-    #                     if c2 not in adj:
-    #                         adj[c2] = set()
-
                     if j<min(len(cur),len(nex)):
                         c1,c2 = cur[j],nex[j]
                         if c1!=c2:
@@ -40,14 +29,9 @@ class Solution:
                                 return ""
                             else:
                                 adj[c1].add(c2)
-                                # found = True
                                 break
                 else:
                     if len(cur)>len(nex): return ""
-                # else:
-                    
-#             else:
-#                 return ""
         
         def topo():
             seen = set()

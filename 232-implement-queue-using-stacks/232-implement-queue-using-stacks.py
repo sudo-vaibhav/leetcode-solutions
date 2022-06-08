@@ -21,4 +21,4 @@ class MyQueue:
         return self.st2[-1]
 
     def empty(self) -> bool:
-        return len(self.st1)+len(self.st2)==0
+        return not (self.st1 or self.st2)

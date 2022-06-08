@@ -1,5 +1,5 @@
 class Solution:
-    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    def nextGreaterElement(self, qry: List[int], nums2: List[int]) -> List[int]:
         
         grtr = defaultdict(lambda : -1)
         st = []
@@ -12,5 +12,5 @@ class Solution:
                     st.pop()
                 st.append(num)
         
-        return [grtr[num] for num in nums1]
+        return [grtr[num] for num in qry]
                 

@@ -15,13 +15,14 @@ class Solution:
         return "".join(ans[::-1])
     
     def alienOrder(self, words: List[str]) -> str:
-        adj = defaultdict(set)
         n = len(words)
         chars = set()
         
         for word in words:
             for char in word:
-                chars.add(char)                
+                chars.add(char)
+                
+        adj = defaultdict(list)
         for i in range(n):
             for j in range(i+1,n):
                 cur,nex = words[i],words[j]
@@ -31,7 +32,7 @@ class Solution:
                         if c1 in adj[c2]:
                             return ""
                         else:
-                            adj[c1].add(c2)
+                            adj[c1].append(c2)
                             break
                 else:
                     if len(cur)>len(nex): return ""

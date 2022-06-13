@@ -9,7 +9,7 @@ class Solution:
             
             def process(self,c):
                 if self.state==start:
-                #                         keep ignoring whitespaces
+#                   keep ignoring whitespaces
                     if c==" ":
                         return
                     else:
@@ -18,22 +18,20 @@ class Solution:
                             if c=="-":
                                 self.mult=-1    
                         else:
-                    #                           nums should start now, so process it again to count that num without writing
-                    #                           more logic in start phase
+#                           nums should start now, so process it again to count that num without writing
+#                           more logic in start phase
                             self.process(c)
                 elif self.state==processing:
                     if c.isdigit():
                         temp = self.val*10+int(c)
-                        self.val = min(2**31,temp)
-                        # self.val = max(-2**31,self.val)
+                        self.val = min(2**31,temp) # since values can only be positive, sign will be added later
                     else:
-                    #                         mark end of phase
                         self.state=end
                         
             def verdict(self):
                 base = self.val
                 if base == 2**31 and self.mult==1:
-                    base-=1
+                    base-=1 # negatives go till 2**31 abs value, but positive only till 2**31 - 1
                 return self.mult*base
     
         automaton = Automaton()

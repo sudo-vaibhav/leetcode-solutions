@@ -4,13 +4,12 @@ class Solution:
         idx = 0
         while True:
             char = None
-            for s in strs:
-                if len(s)<=idx:
-                    return s[:idx]
+            for i in range(N):
+                if len(strs[i])<=idx:
+                    return strs[i][:idx]
                 else:
                     if char==None:
-                        char = s[idx]
+                        char = strs[i][idx]
                     else:
-                        if char!=s[idx]:return s[:idx]
+                        if char!=strs[i][idx]:return strs[i][:idx]
             idx+=1
-        # return strs[0][:idx]

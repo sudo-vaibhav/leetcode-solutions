@@ -1,10 +1,16 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
+        M = len(triangle)
         @cache
-        def solve(ridx,cidx):
-            if cidx>ridx+1: return inf
-            if ridx==n: return 0
-            ma = triangle[ridx][cidx]+min(solve(ridx+1,cidx),solve(ridx+1,cidx+1))
-            return ma
+        def solve(row,col):
+            if row==M:
+                return 0
+            else:
+                N = len(triangle[row])
+                if 0<=col<N:
+                    cur = triangle[row][col]
+                    return cur + min(solve(row+1,col),solve(row+1,col+1))
+                else:
+                    return inf
+            
         return solve(0,0)

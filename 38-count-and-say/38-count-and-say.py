@@ -8,10 +8,8 @@ class Solution:
             while r<N and base[r]==cur:
                 r+=1
                 cnt+=1
-            print(cur,cnt)
             ans+=str(cnt)+cur
             cnt=0
-            
         return ans
             
             

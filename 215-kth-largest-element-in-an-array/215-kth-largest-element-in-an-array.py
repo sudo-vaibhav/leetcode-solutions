@@ -5,5 +5,4 @@ class Solution:
             heappush(heap,num)
             if len(heap)>k:
                 heappop(heap)
-        
-        return heappop(heap)
+        return heap[0]

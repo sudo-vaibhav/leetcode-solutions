@@ -1,28 +1,20 @@
 #User function Template for python3
 class Solution:
     def bottomView(self, root):
-        # code here
         d = {}
-        
-        def levelOrder(root):
-            nonlocal d
-            q = deque()
-            q.append((root,0))
-            while q:
-                lenQ = len(q)
-                for _ in range(lenQ):
-                    node,delta = q.popleft()
-                    d[delta] = node.data
-                    if node.left:
-                        q.append((node.left,delta-1))
-                    if node.right:
-                        q.append((node.right,delta+1))
-
-        levelOrder(root)
+        q = deque()
+        q.append((root,0))
+        while q:
+            lenQ = len(q)
+            for _ in range(lenQ):
+                node,delta = q.popleft()
+                d[delta] = node.data
+                if node.left:
+                    q.append((node.left,delta-1))
+                if node.right:
+                    q.append((node.right,delta+1))
         keys = sorted(list(d.keys()))
-        ans = []
-        for key in keys:
-            ans.append(d[key])
+        ans = [d[key] for key in keys]            
         return ans
 
 #{ 

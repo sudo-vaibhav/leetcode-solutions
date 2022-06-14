@@ -1,16 +1,6 @@
 #User function Template for python3
 
 
-'''
-# Node Class:
-class Node:
-    def _init_(self,val):
-        self.data = val
-        self.left = None
-        self.right = None
-'''
-
-#Function to return a list containing elements of left view of the binary tree.
 def LeftView(root):
     ans = []
     def lvr(root,depth=0):
@@ -24,8 +14,7 @@ def LeftView(root):
         lvr(root.right,depth+1)
     lvr(root)
     return ans
-    # code here
-
+    
 #{ 
 #  Driver Code Starts
 #Contributed by Sudarshan Sharma

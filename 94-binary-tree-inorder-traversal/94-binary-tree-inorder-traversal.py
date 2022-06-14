@@ -13,15 +13,15 @@ class Solution:
                 ans.append(temp.val)
                 temp = temp.right
             else:
-                rightMostLeaf = temp.left
-                while rightMostLeaf.right and rightMostLeaf.right!=temp:
-                    rightMostLeaf = rightMostLeaf.right
-                if rightMostLeaf.right==temp:
-                    ans.append(temp.val)
-                    rightMostLeaf.next = None
-                    temp = temp.right
-                else:
-                    rightMostLeaf.right = temp
+                rightmostLeaf = temp.left
+                while rightmostLeaf.right and rightmostLeaf.right!=temp:
+                    rightmostLeaf = rightmostLeaf.right
+                
+                if rightmostLeaf.right==None:
+                    rightmostLeaf.right = temp
                     temp = temp.left
+                else:
+                    ans.append(temp.val)
+                    rightmostLeaf.right = None
+                    temp = temp.right
         return ans
-                    

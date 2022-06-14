@@ -16,26 +16,25 @@ class Solution:
         
 #         vlr(root)
 #         return ans
-        
+
 #         vlr
         temp = root
         ans = []
-        
         while temp:
             if not temp.left:
                 ans.append(temp.val)
                 temp = temp.right
             else:
-                leftmostLeaf = temp.left
-                while leftmostLeaf.right and leftmostLeaf.right!=temp:
-                    leftmostLeaf = leftmostLeaf.right
+                rightmostLeaf = temp.left
+                while rightmostLeaf.right and rightmostLeaf.right!=temp:
+                    rightmostLeaf = rightmostLeaf.right
                 
-                if leftmostLeaf.right==None:
+                if rightmostLeaf.right==None:
                     ans.append(temp.val)
-                    leftmostLeaf.right = temp
+                    rightmostLeaf.right = temp
                     temp = temp.left
                 else:
-                    leftmostLeaf.right = None
+                    rightmostLeaf.right = None
                     temp = temp.right
         return ans
         

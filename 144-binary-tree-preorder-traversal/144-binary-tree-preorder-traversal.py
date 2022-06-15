@@ -65,9 +65,9 @@ class Solution:
         
         
         
-        print(preorder)
-        print(inorder)
-        print(postorder)
+#         print(preorder)
+#         print(inorder)
+#         print(postorder)
         
         
         return preorder

@@ -42,34 +42,36 @@ class Solution:
         postorder = []
         inorder = []
         
-        if not root:return []
-        st = deque()
-        st.append((root,1))
-        while st:
-            cur,v = st.pop()
-            val = cur.val
-            if v==1:
-                preorder.append(val)
-                v+=1
-                st.append((cur,v))
-                if cur.left:
-                    st.append((cur.left,1))
-            elif v==2:
-                inorder.append(val)
-                v+=1
-                st.append((cur,v))
-                if cur.right:
-                    st.append((cur.right,1))
-            else:
-                postorder.append(val)
+        def solve(root):
+            if not root:return
+            
+            preorder.append(root.val)
+            solve(root.left)
+            inorder.append(root.val)
+            solve(root.right)
+            postorder.append(root.val)
         
-        
-        
-#         print(preorder)
-#         print(inorder)
-#         print(postorder)
-        
-        
+        solve(root)
+        # if not root:return []
+        # st = deque()
+        # st.append((root,1))
+        # while st:
+        #     cur,v = st.pop()
+        #     val = cur.val
+        #     if v==1:
+        #         preorder.append(val)
+        #         v+=1
+        #         st.append((cur,v))
+        #         if cur.left:
+        #             st.append((cur.left,1))
+        #     elif v==2:
+        #         inorder.append(val)
+        #         v+=1
+        #         st.append((cur,v))
+        #         if cur.right:
+        #             st.append((cur.right,1))
+        #     else:
+        #         postorder.append(val)
         return preorder
         
         

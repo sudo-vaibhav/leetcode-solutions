@@ -18,35 +18,35 @@ class Solution:
 #         return ans
 
 #         vlr
-#         temp = root
-#         ans = []
-#         while temp:
-#             if not temp.left:
-#                 ans.append(temp.val)
-#                 temp = temp.right
-#             else:
-#                 rightmostLeaf = temp.left
-#                 while rightmostLeaf.right and rightmostLeaf.right!=temp:
-#                     rightmostLeaf = rightmostLeaf.right
+        temp = root
+        ans = []
+        while temp:
+            if not temp.left:
+                ans.append(temp.val)
+                temp = temp.right
+            else:
+                rightmostLeaf = temp.left
+                while rightmostLeaf.right and rightmostLeaf.right!=temp:
+                    rightmostLeaf = rightmostLeaf.right
                 
-#                 if rightmostLeaf.right==None:
-#                     ans.append(temp.val)
-#                     rightmostLeaf.right = temp
-#                     temp = temp.left
-#                 else:
-#                     rightmostLeaf.right = None
-#                     temp = temp.right
-#         return ans
+                if rightmostLeaf.right==None:
+                    ans.append(temp.val)
+                    rightmostLeaf.right = temp
+                    temp = temp.left
+                else:
+                    rightmostLeaf.right = None
+                    temp = temp.right
+        return ans
 
-        preorder,postorder,inorder = [],[],[]
-        def solve(root):
-            if not root:return
-            preorder.append(root.val)
-            solve(root.left)
-            inorder.append(root.val)
-            solve(root.right)
-            postorder.append(root.val)
-        solve(root)
+#         preorder,postorder,inorder = [],[],[]
+#         def solve(root):
+#             if not root:return
+#             preorder.append(root.val)
+#             solve(root.left)
+#             inorder.append(root.val)
+#             solve(root.right)
+#             postorder.append(root.val)
+#         solve(root)
         
         # if not root:return []
         # st = deque()

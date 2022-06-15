@@ -18,24 +18,68 @@ class Solution:
 #         return ans
 
 #         vlr
-        temp = root
-        ans = []
-        while temp:
-            if not temp.left:
-                ans.append(temp.val)
-                temp = temp.right
-            else:
-                rightmostLeaf = temp.left
-                while rightmostLeaf.right and rightmostLeaf.right!=temp:
-                    rightmostLeaf = rightmostLeaf.right
+#         temp = root
+#         ans = []
+#         while temp:
+#             if not temp.left:
+#                 ans.append(temp.val)
+#                 temp = temp.right
+#             else:
+#                 rightmostLeaf = temp.left
+#                 while rightmostLeaf.right and rightmostLeaf.right!=temp:
+#                     rightmostLeaf = rightmostLeaf.right
                 
-                if rightmostLeaf.right==None:
-                    ans.append(temp.val)
-                    rightmostLeaf.right = temp
-                    temp = temp.left
-                else:
-                    rightmostLeaf.right = None
-                    temp = temp.right
-        return ans
+#                 if rightmostLeaf.right==None:
+#                     ans.append(temp.val)
+#                     rightmostLeaf.right = temp
+#                     temp = temp.left
+#                 else:
+#                     rightmostLeaf.right = None
+#                     temp = temp.right
+#         return ans
+
+        preorder = []
+        postorder = []
+        inorder = []
+        
+        if not root:return []
+        st = deque()
+        st.append((root,1))
+        while st:
+            cur,v = st.pop()
+            val = cur.val
+            if v==1:
+                preorder.append(val)
+                v+=1
+                st.append((cur,v))
+                if cur.left:
+                    st.append((cur.left,1))
+            elif v==2:
+                inorder.append(val)
+                v+=1
+                st.append((cur,v))
+                if cur.right:
+                    st.append((cur.right,1))
+            else:
+                postorder.append(val)
+        
+        
+        
+        print(preorder)
+        print(inorder)
+        print(postorder)
+        
+        
+        return preorder
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         

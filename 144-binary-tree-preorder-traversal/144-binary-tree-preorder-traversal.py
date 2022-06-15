@@ -38,20 +38,16 @@ class Solution:
 #                     temp = temp.right
 #         return ans
 
-        preorder = []
-        postorder = []
-        inorder = []
-        
+        preorder,postorder,inorder = [],[],[]
         def solve(root):
             if not root:return
-            
             preorder.append(root.val)
             solve(root.left)
             inorder.append(root.val)
             solve(root.right)
             postorder.append(root.val)
-        
         solve(root)
+        
         # if not root:return []
         # st = deque()
         # st.append((root,1))

@@ -5,11 +5,11 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def solve(self,r1,r2):
-        if not r1 and not r2 : return True
-        elif not r1 or not r2: return False
-        else:
-            return r1.val==r2.val and self.solve(r1.left,r2.right) and self.solve(r1.right,r2.left)
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root : return True
-        return self.solve(root.left,root.right)
+        
+        def check(p,q):
+            if not p or not q:
+                return p==q
+            return p.val==q.val and check(p.left,q.right) and check(p.right, q.left)
+        
+        return check(root.left,root.right)

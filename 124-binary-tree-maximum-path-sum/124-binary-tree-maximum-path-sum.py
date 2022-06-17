@@ -5,15 +5,13 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def solve(self,root):
-        if not root: return 0
-        else:
-            L = self.solve(root.left)
-            R = self.solve(root.right)
-            self.ans = max(self.ans,root.val+max(0,L)+max(0,R))
-            
-            return root.val+max(0,L,R)
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        self.ans = root.val
-        self.solve(root)
-        return self.ans
+        ans = root.val
+        def solve(node):
+            nonlocal ans
+            if not node:return 0
+            L,R = solve(node.left),solve(node.right)
+            ans = max(ans,node.val+max(0,L)+max(0,R))
+            return max(0,node.val,node.val+L,node.val+R)
+        solve(root)
+        return ans

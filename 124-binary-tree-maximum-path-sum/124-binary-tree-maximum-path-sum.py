@@ -12,6 +12,6 @@ class Solution:
             if not node:return 0
             L,R = solve(node.left),solve(node.right)
             ans = max(ans,node.val+max(0,L)+max(0,R))
-            return max(0,node.val,node.val+L,node.val+R)
+            return max(node.val,node.val+L,node.val+R)
         solve(root)
         return ans

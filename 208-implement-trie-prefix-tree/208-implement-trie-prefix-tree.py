@@ -19,4 +19,4 @@ class Trie:
         for c in prefix:
             if c not in tmp: return False
             tmp = tmp[c]
-        return len(tmp.keys())>0
+        return tmp.keys()

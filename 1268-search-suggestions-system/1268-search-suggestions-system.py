@@ -11,12 +11,14 @@ class Solution:
                 if ITEMS not in tmp:
                     tmp[ITEMS] = SortedSet()
                 tmp[ITEMS].add(product)
+                if len(tmp[ITEMS])>3:
+                    tmp[ITEMS].pop()
         ans = []
         tmp = trie
         for w in searchWord:
             tempans = []
             tmp = tmp[w]
             if ITEMS in tmp:
-                tempans.extend(tmp[ITEMS][:3])
+                tempans.extend(tmp[ITEMS])
             ans.append(list(tempans))
         return ans

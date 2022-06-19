@@ -1,10 +1,9 @@
-from sortedcontainers import SortedSet
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         products.sort()
         TR = lambda : defaultdict(TR)
         trie = TR()
-        ITEMS = "items"
+        ITEMS = False
         for idx,product in enumerate(products):
             tmp = trie
             for c in product:

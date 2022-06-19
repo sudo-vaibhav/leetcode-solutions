@@ -3,7 +3,7 @@ class Solution:
         products.sort()
         TR = lambda : defaultdict(TR)
         trie = TR()
-        ITEMS = False
+        ITEMS = "items"
         for idx,product in enumerate(products):
             tmp = trie
             for c in product:
@@ -19,5 +19,5 @@ class Solution:
             tmp = tmp[w]
             if ITEMS in tmp:
                 tempans.extend([products[i] for i in tmp[ITEMS]])
-            ans.append(list(tempans))
+            ans.append(tempans)
         return ans

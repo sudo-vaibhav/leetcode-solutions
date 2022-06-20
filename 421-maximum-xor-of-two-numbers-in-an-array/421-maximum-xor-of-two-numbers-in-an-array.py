@@ -24,8 +24,8 @@ class Solution:
         # print(nums)
         ans = 0
         for num in nums:
+            self.insert(trie,num)
             flipped = [not bit for bit in num]
             closest = self.findClosest(trie,flipped) 
             ans = max(ans,closest)
-            self.insert(trie,num)
         return ans

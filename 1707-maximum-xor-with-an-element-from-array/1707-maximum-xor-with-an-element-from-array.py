@@ -2,15 +2,15 @@ class Solution:
     @cache
     def getNum(self,num):
         NUM = bin(num)[2:]
-        NUM= ["0" for _ in range(self.TLEN-len(NUM))]+list(NUM)
+        NUM= [0 for _ in range(self.TLEN-len(NUM))]+list(map(int,list(NUM)))
         return NUM
     def closest(self,trie,num):
         if len(trie.keys())==0:
             return -1
         ans,tmp = 0,trie
-        NUM = self.getNum(num)
+        num = self.getNum(num)
         for bitIdx in range(self.TLEN):
-            bit = 1 if NUM[bitIdx]=="1" else 0
+            bit = num[bitIdx]
             flippedBit = 1-bit
             if flippedBit in tmp:
                 ans |=1
@@ -24,7 +24,7 @@ class Solution:
         num = self.getNum(num)
         tmp = trie
         for bitIdx in range(self.TLEN):
-            bit = 1 if num[bitIdx]=="1" else 0
+            bit = num[bitIdx]
             tmp = tmp[bit]
             
     def maximizeXor(self, nums: List[int], queries: List[List[int]]) -> List[int]:

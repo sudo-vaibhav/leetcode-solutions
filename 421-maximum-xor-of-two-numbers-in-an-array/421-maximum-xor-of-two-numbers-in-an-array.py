@@ -7,7 +7,7 @@ class Solution:
                 ans = ans|1
                 tmp = tmp[bit]
             else:
-                tmp = tmp[1-bit]
+                tmp = tmp[not bit]
             ans<<=1
         return ans>>1
     def insert(self,trie,num):
@@ -24,7 +24,7 @@ class Solution:
         # print(nums)
         ans = 0
         for num in nums:
-            flipped = [1-bit for bit in num]
+            flipped = [not bit for bit in num]
             closest = self.findClosest(trie,flipped) 
             ans = max(ans,closest)
             self.insert(trie,num)

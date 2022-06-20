@@ -1,16 +1,9 @@
 class Solution:
-    @cache
-    def getNum(self,num):
-        NUM = bin(num)[2:]
-        NUM= [0 for _ in range(self.TLEN-len(NUM))]+list(map(int,list(NUM)))
-        return NUM
     def closest(self,trie,num):
-        if len(trie.keys())==0:
-            return -1
+        if len(trie.keys())==0: return -1
         ans,tmp = 0,trie
-        num = self.getNum(num)
-        for bitIdx in range(self.TLEN):
-            bit = num[bitIdx]
+        for i in range(self.TLEN-1,-1,-1):
+            bit = (num>>i)&1
             flippedBit = 1-bit
             if flippedBit in tmp:
                 ans |=1
@@ -21,23 +14,18 @@ class Solution:
         return ans>>1
     
     def insert(self,trie,num):
-        num = self.getNum(num)
         tmp = trie
-        for bitIdx in range(self.TLEN):
-            bit = num[bitIdx]
+        for i in range(self.TLEN-1,-1,-1):
+            bit = (num>>i)&1
             tmp = tmp[bit]
             
     def maximizeXor(self, nums: List[int], queries: List[List[int]]) -> List[int]:
         self.TLEN = len(bin(max(max(nums),max([q[0] for q in queries]))))-2
         Trie = lambda : defaultdict(Trie)
         nums.sort()
-        trie = Trie()
-#         query - base,upperBound        
+        trie,iter,ans = Trie(),0,[None]*len(queries)
         base,ub,origIdx = range(3)
-        queries = [(q[0],q[1],idx) for idx,q in enumerate(queries)]
-        queries.sort(key=lambda x:x[ub])
-        ans = [None]*len(queries)
-        iter = 0
+        queries = sorted([(q[0],q[1],idx) for idx,q in enumerate(queries)],key=lambda x:x[ub])
         for Base,UB,OrigIdx in queries:
             while iter<len(nums) and nums[iter]<=UB:
                 self.insert(trie,nums[iter])

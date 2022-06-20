@@ -26,8 +26,7 @@ class Solution:
         trie,iter,ans = Trie(),0,[None]*len(queries)
         queries = sorted([(q[0],q[1],idx) for idx,q in enumerate(queries)],key=lambda x:x[1])
         for Base,UB,OrigIdx in queries:
-            while iter<len(nums) and nums[iter]<=UB:
-                _,iter = self.insert(trie,nums[iter]),iter+1
+            while iter<len(nums) and nums[iter]<=UB: _,iter = self.insert(trie,nums[iter]),iter+1
             temp = self.closest(trie,Base)
             ans[OrigIdx] = temp
         return ans

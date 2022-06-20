@@ -1,8 +1,8 @@
 class Solution:
     def findClosest(self,trie,target):
-        tmp = trie
-        ans = 0
-        for bit in target:
+        tmp,ans = trie,0
+        for i in range(self.MAXLEN-1,-1,-1):
+            bit = 1-(target>>i)&1
             if bit in tmp:
                 ans = ans|1
                 tmp = tmp[bit]
@@ -12,20 +12,14 @@ class Solution:
         return ans>>1
     def insert(self,trie,num):
         tmp = trie
-        for bit in num:
-            tmp = tmp[bit]
+        for i in range(self.MAXLEN-1,-1,-1):
+            tmp = tmp[(num>>i)&1]
     def findMaximumXOR(self, nums: List[int]) -> int:
-#      biggest num binary representation length in array
-        n = len(bin(max(nums)))-2
+        self.MAXLEN = len(bin(max(nums)))-2
         Trie = lambda : defaultdict(Trie)
-        trie = Trie()
-#       redefine nums
-        nums = [[(num & (1<<i))!=0 for i in range(n-1,-1,-1)] for num in nums]
-        # print(nums)
-        ans = 0
+        trie,ans = Trie(),0
         for num in nums:
             self.insert(trie,num)
-            flipped = [not bit for bit in num]
-            closest = self.findClosest(trie,flipped) 
+            closest = self.findClosest(trie,num) 
             ans = max(ans,closest)
         return ans

@@ -20,7 +20,7 @@ class Solution:
         Trie = lambda : defaultdict(Trie)
         trie = Trie()
 #       redefine nums
-        nums = [[int((num & (1<<i))!=0) for i in range(n-1,-1,-1)] for num in nums]
+        nums = [[(num & (1<<i))!=0 for i in range(n-1,-1,-1)] for num in nums]
         # print(nums)
         ans = 0
         for num in nums:

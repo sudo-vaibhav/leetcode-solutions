@@ -1,4 +1,5 @@
 class Solution:
+    @cache
     def getNum(self,num):
         NUM = bin(num)[2:]
         NUM= ["0" for _ in range(self.TLEN-len(NUM))]+list(NUM)
@@ -8,7 +9,6 @@ class Solution:
             return -1
         ans,tmp = 0,trie
         NUM = self.getNum(num)
-        # print(num,NUM)
         for bitIdx in range(self.TLEN):
             bit = 1 if NUM[bitIdx]=="1" else 0
             flippedBit = 1-bit

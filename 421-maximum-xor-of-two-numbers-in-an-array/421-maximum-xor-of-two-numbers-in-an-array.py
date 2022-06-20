@@ -9,7 +9,7 @@ class Solution:
             else:
                 tmp = tmp[1-bit]
             ans<<=1
-        return ans
+        return ans>>1
     def insert(self,trie,num):
         tmp = trie
         for bit in num:
@@ -28,4 +28,4 @@ class Solution:
             closest = self.findClosest(trie,flipped) 
             ans = max(ans,closest)
             self.insert(trie,num)
-        return ans//2
+        return ans

@@ -92,9 +92,7 @@
         
 class Solution:
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
-        N = len(heights)
-        laddersUsed = []
-        i = 0
+        N,laddersUsed,i = len(heights),[],0
         while i<N-1:
             cur,nex = heights[i],heights[i+1]
             diff = nex-cur
@@ -105,26 +103,14 @@ class Solution:
                     ladders-=1
                 else:
 #                   now try to avoid using bricks (if a ladder was used previously for 
-#                   a more trivial climb, swap uses instead)
-                    if laddersUsed:
-                        if laddersUsed[0]<diff and laddersUsed[0]<=bricks:
-                            oldDiff = heappop(laddersUsed)
+#                   a more trivial climb, swap uses of the two instead)
+                    if laddersUsed and laddersUsed[0]<diff and laddersUsed[0]<=bricks:
+                            bricks-=heappop(laddersUsed)
                             heappush(laddersUsed,diff)
-                            bricks-=oldDiff
-                        else:
-                            if bricks>=diff:
-                                bricks-=diff
-                            else:
-                                break
                     else:
-                        if bricks>=diff:
-                            bricks -= diff
-                        else:
-                            break
-                        
+                        if bricks>=diff: bricks -= diff
+                        else: break
             i+=1
-        
-        
         return i
         
         

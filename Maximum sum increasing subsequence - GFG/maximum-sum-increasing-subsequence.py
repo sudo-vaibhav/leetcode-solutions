@@ -4,16 +4,13 @@ class Solution:
 	def maxSumIS(self, Arr, n):
         @lru_cache(maxsize=None)
         def solve(i):
-            if i==n-1:
-                return Arr[i]
-            else:
-                ans = Arr[i]
-                for nex in range(i+1,n):
-                    if Arr[nex]>Arr[i]:
-                        ans = max(ans,Arr[i]+solve(nex))
-                return ans
+            ans = Arr[i]
+            for nex in range(i+1,n):
+                if Arr[nex]>Arr[i]:
+                    ans = max(ans,Arr[i]+solve(nex))
+            return ans
                 
-        return max([0]+[solve(i) for i in range(n)])
+        return max([solve(i) for i in range(n)])
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3

@@ -1,20 +1,18 @@
-#User function Template for python3
 from functools import lru_cache
 from math import inf
 class Solution:
-    
-    #Function to find minimum number of attempts needed in 
-    #order to find the critical floor.
     def eggDrop(self,n, k):
         @lru_cache(maxsize=None)
         def solve(floors,eggs):
-            if floors<=1:return 1
+            if floors<=1: return floors
             if eggs==1:return floors
             ans = inf
-            for curDrop in range(1,floors+1):
-                ans = min(ans,1+max(solve(curDrop-1,eggs-1),solve(floors-curDrop,eggs)))
+            for curDrop in range(floors):
+                ans = min(ans,1+max(solve(curDrop,eggs-1),solve(floors-curDrop-1,eggs)))
             return ans
-        return solve(k,n)
+        return solve(floors = k,eggs = n)
+
+
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3

@@ -2,17 +2,13 @@ class Solution:
     
     #Function to return list containing vertices in Topological order.
     def topoSort(self, V, adj):
-        vis = set()
+        ans,vis = [],set()
         def dfs(node):
-            nonlocal vis,ans
             if node in vis: return
             vis.add(node)
-            for dest in adj[node]:
-                dfs(dest)
+            for dest in adj[node]: dfs(dest)
             ans.append(node)
-        ans = []
-        for i in range(V):
-            dfs(i)
+        for i in range(V): dfs(i)
         return ans[::-1]
 #{ 
 #  Driver Code Starts

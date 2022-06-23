@@ -3,15 +3,11 @@ class Solution:
     
     #Function to return list containing vertices in Topological order.
     def topoSort(self, V, adj):
-        indegree = {i:0 for i in range(V)}
+        q,ans,indegree = deque(),[],{i:0 for i in range(V)}
         for i in range(V):
-            for j in adj[i]:
-                indegree[j]+=1
-        q = deque()
+            for j in adj[i]: indegree[j]+=1
         for i in range(V):
-            if indegree[i]==0:
-                q.append(i)
-        ans = []
+            if indegree[i]==0: q.append(i)
         while q:
             lenQ = len(q)
             for _ in range(lenQ):

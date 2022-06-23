@@ -12,8 +12,7 @@ class Solution:
             ans.append(node)
         ans = []
         for i in range(V):
-            if i not in vis:
-                dfs(i)
+            dfs(i)
         return ans[::-1]
 #{ 
 #  Driver Code Starts

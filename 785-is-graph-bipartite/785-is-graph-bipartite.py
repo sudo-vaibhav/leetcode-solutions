@@ -4,10 +4,10 @@ class Solution:
         def dfs(node,col):
             color[node]=col
             for dest in graph[node]:
-                if dest in color and color[dest]==col:
-                    return False
-            for dest in graph[node]:
-                if dest not in color:
+                if dest in color:
+                    if color[dest]==col:
+                        return False
+                else:
                     if not dfs(dest,1-col):return False
             return True
         

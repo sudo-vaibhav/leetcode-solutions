@@ -8,15 +8,16 @@ class Solution:
             for j in adj[i]: indegree[j]+=1
         for i in range(V):
             if indegree[i]==0: q.append(i)
+        cnt=0
         while q:
-            lenQ = len(q)
-            for _ in range(lenQ):
-                cur = q.popleft()
-                ans.append(cur)
-                for dest in adj[cur]:
-                    indegree[dest]-=1
-                    if indegree[dest]==0:
-                        q.append(dest)
+            cur = q.popleft()
+            ans.append(cur)
+            for dest in adj[cur]:
+                indegree[dest]-=1
+                if indegree[dest]==0: q.append(dest)
+            cnt+=1
+        if cnt<V:
+            print("cycle in graph")
         return ans
 #{ 
 #  Driver Code Starts

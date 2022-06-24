@@ -12,9 +12,8 @@ class Solution:
             for dest in adj[node]:
                 topo(dest)
             topoSort.append(node)
-        for i in range(V):
-            topo(i)
-        topoSort[:] = topoSort[::-1]
+        for i in range(V): topo(i)
+        topoSort.reverse()
         ccCount = 0
         vis = set()
         revAdj = [[] for _ in range(V)]

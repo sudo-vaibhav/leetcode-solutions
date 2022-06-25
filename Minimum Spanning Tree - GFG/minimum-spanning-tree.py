@@ -35,19 +35,19 @@ class Solution:
     
     def spanningTree(self, V, adj):
         heap = []
-        mstSet = [False]*V
+        addedToMST = [False]*V
         dist = [inf]*V
         parent = [-1]*V
         dist[0]=0
         heappush(heap,(0,0))
         while heap:
             _,u = heappop(heap)
-            mstSet[u]=True
+            addedToMST[u]=True
             for v,wt in adj[u]:
-                if mstSet[v]==False and dist[v]>wt:
+                if addedToMST[v]==False and dist[v]>wt:
                     dist[v] = wt
+                    parent[v]=u
                     heappush(heap,(dist[v],v))
-        
         return sum(dist)
 #{ 
 #  Driver Code Starts

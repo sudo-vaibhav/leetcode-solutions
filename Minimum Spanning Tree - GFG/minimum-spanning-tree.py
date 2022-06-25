@@ -35,20 +35,23 @@ class Solution:
     
     def spanningTree(self, V, adj):
         heap = []
-        addedToMST = [False]*V
-        dist = [inf]*V
-        parent = [-1]*V
-        dist[0]=0
+        dists = [inf]*V
         heappush(heap,(0,0))
+        dists[0] = 0
+        parent = [-1]*V
+        inMST = [False]*V
+        
         while heap:
-            _,u = heappop(heap)
-            addedToMST[u]=True
+            _, u = heappop(heap)
+            inMST[u] = True
             for v,wt in adj[u]:
-                if addedToMST[v]==False and dist[v]>wt:
-                    dist[v] = wt
-                    parent[v]=u
-                    heappush(heap,(dist[v],v))
-        return sum(dist)
+                if inMST[v]==False and wt<dists[v]:
+                    dists[v] = wt
+                    parent[v] = u
+                    heappush(heap,(wt,v))
+        # print(parent,dists)
+        return sum(dists)
+        
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3

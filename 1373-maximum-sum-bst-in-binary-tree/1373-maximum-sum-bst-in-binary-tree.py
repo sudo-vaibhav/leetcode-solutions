@@ -10,7 +10,6 @@ class Solution:
                 tempSum = L[sum]+R[sum]+node.val
                 ans = max(ans,tempSum)
                 return (True,min(node.val,L[minVal],R[minVal]),max(node.val,L[maxVal],R[maxVal]),tempSum)
-            return tuple([False])
-        
+            return tuple([False,"""rest params dont matter anyways now"""])
         solve(root)
         return ans

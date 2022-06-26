@@ -13,4 +13,4 @@ class BSTIterator:
             temp = temp.left
         return node.val
     def hasNext(self) -> bool:
-        return not not self.st
+        return self.st

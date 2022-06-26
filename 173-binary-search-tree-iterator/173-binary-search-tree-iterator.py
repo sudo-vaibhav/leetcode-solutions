@@ -7,11 +7,10 @@ class BSTIterator:
             temp = temp.left
     def next(self) -> int:
         node = self.st.pop()
-        v = node.val
         temp = node.right
         while temp:
             self.st.append(temp)
             temp = temp.left
-        return v
+        return node.val
     def hasNext(self) -> bool:
         return not not self.st

@@ -1,36 +1,25 @@
 class Solution:
     def shortestWay(self, source: str, target: str) -> int:
-        sc,tc = set(source),set(target)
-        
-        for c in tc:
-            if c not in sc:
-                return -1
-        
+        sc,tc = set(source),set(target) # O(1) space
+        for c in tc: # O(1)
+            if c not in sc: return -1
         n = len(target)
-        
-        # dp = [[inf if i!=j else 1 for j in range(n)] for i in range(n)]
-        # for start in range(n):
-        #     for end in range(start,n):
-        #         dp[]
-        firstOcc = {}
-        for idx,i in enumerate(source):
-            if i not in firstOcc:
-                firstOcc[i] = idx
+        occs = defaultdict(list) # O(1)
+        for idx,i in enumerate(source): # O(n)
+            # if i not in occ:
+            occs[i].append(idx)
         m = len(source)
         ti = 0
-        si = m
-        ans = 0
-        while ti<n:
-            if si==m:
-                si = firstOcc[target[ti]]
+        si = 0
+        ans = 1
+        while ti<n: # O(n)
+            curChar = target[ti]
+            newSi = bisect_left(occs[curChar],si)
+            # print(curChar,si,newSi)
+            if newSi >= len(occs[curChar]):
                 ans+=1
-            while si<m and source[si]!=target[ti]:
-                si+=1
-            if si<m:
-                ti+=1
-                si+=1
-            # if si==m:
-                
-                
-            
+                si = 0
+                continue
+            si = occs[curChar][newSi]+1
+            ti+=1
         return ans

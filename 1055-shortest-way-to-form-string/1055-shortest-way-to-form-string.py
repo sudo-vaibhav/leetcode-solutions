@@ -12,10 +12,8 @@ class Solution:
         for idx in range(m-1,-1,-1):
             cur = source[idx]
             latestOcc[cur] = idx
-            for alpha in range(ord('a'),ord('z')+1):
-                alp = chr(alpha)
+            for alp in sc:
                 if alp in latestOcc:
-                    # print(idx,alp)
                     nex[idx,alp] = latestOcc[alp]
                     
         ti = 0
@@ -24,7 +22,6 @@ class Solution:
         
 #       with candidates starting from current index
         def getNextOcc(char,idx):
-            # print(char,idx)
             return nex[idx,char]
         
         while ti<n: # O(n)

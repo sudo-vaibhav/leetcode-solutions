@@ -1,8 +1,8 @@
 class Solution:
     def twoSumLessThanK(self, nums: List[int], k: int) -> int:
-        ctr = Counter(nums)
+        # ctr = Counter(nums)
         maxSum = -1
-        nums.sort()# = sorted(nums)
+        nums.sort()
         l,r = 0,len(nums)-1
         
         while l<r:

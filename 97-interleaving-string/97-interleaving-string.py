@@ -3,19 +3,18 @@ class Solution:
         m,n,p = len(s1),len(s2),len(s3)
         
         @cache
-        def solve(i,j,k):
-            # print(i,j,k)
+        def solve(i,k):
+            j = k-i
             if k==p:
-                # print("exiting",i,j,k,m,n,p)
                 return i==m and j==n and k==p
             ans = False
             if i<m and s1[i]==s3[k]:
-                ans = ans or solve(i+1,j,k+1)
+                ans = ans or solve(i+1,k+1)
             if j<n and s2[j]==s3[k]:
-                ans = ans or solve(i,j+1,k+1)
+                ans = ans or solve(i,k+1)
             return ans
         
-        return solve(0,0,0)
+        return solve(0,0)
         
         
         

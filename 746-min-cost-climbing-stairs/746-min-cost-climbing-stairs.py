@@ -13,13 +13,11 @@ class Solution:
 #         return min(solve(0),solve(1))
 
         n = len(cost)
-        endCost = [0]*n
-        endCost[-1] = 0
-        endCost[-2] = 0
-        
+        last = 0
+        secondLast = 0
         for i in range(n-3,-1,-1):
-            endCost[i] = min(endCost[i+1]+cost[i+1],endCost[i+2]+cost[i+2])
-        
-        # print(endCost)
-        return min(endCost[0]+cost[0],endCost[1]+cost[1])
+            cur = min(secondLast+cost[i+1],last+cost[i+2])
+            last = secondLast
+            secondLast = cur
+        return min(secondLast+cost[0],last+cost[1])
         

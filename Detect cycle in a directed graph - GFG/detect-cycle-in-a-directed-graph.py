@@ -5,21 +5,34 @@ class Solution:
     
     #Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
-        q,ans,indegree = deque(),[],{i:0 for i in range(V)}
+        # q,ans,indegree = deque(),[],{i:0 for i in range(V)}
+        # for i in range(V):
+        #     for j in adj[i]: indegree[j]+=1
+        # for i in range(V):
+        #     if indegree[i]==0: q.append(i)
+        # cnt=0
+        # while q:
+        #     cur = q.popleft()
+        #     ans.append(cur)
+        #     for dest in adj[cur]:
+        #         indegree[dest]-=1
+        #         if indegree[dest]==0: q.append(dest)
+        #     cnt+=1
+        # return cnt!=V
+        vis = {}
+        def dfs(node):
+            if node in vis:
+                return vis[node]
+            vis[node] = True
+            for dest in adj[node]:
+                if dfs(dest):
+                    return True
+            vis[node] = False
+            return False
+            
         for i in range(V):
-            for j in adj[i]: indegree[j]+=1
-        for i in range(V):
-            if indegree[i]==0: q.append(i)
-        cnt=0
-        while q:
-            cur = q.popleft()
-            ans.append(cur)
-            for dest in adj[cur]:
-                indegree[dest]-=1
-                if indegree[dest]==0: q.append(dest)
-            cnt+=1
-        return cnt!=V
-
+            if dfs(i):return True
+        return False
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3

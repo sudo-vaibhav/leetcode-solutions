@@ -23,7 +23,6 @@ class Solution:
                 prevSmaller[idx] = st[-1]
             st.append(idx)
         
-        print(nextSmaller,prevSmaller)
         ans,MOD = 0,10**9+7
         for i in range(n):
             cur = nums[i]

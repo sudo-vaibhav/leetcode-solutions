@@ -5,7 +5,7 @@ class Solution:
         res = 0
         for c1 in chars:
             for c2 in chars:
-                variance,hasC2,firstC2 = 0,0,0
+                variance,hasC2,firstC2 = 0,False,False
                 
                 for c in s:
                     variance += c==c1

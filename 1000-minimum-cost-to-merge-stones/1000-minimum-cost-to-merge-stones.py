@@ -25,8 +25,8 @@ class Solution:
                             ans = temp + getSum(i,j)
                     else:
                         for end in range(i,j):
-                            l = solve(i,end,piles-1)
-                            r = solve(end+1,j,1)
+                            l = solve(i,end,1)
+                            r = solve(end+1,j,piles-1)
                             ans = min(ans,l+r)
                 return ans
                         

@@ -32,10 +32,13 @@ class Solution:
                     for di,dj in moves:
                         I,J = i+di,j+dj
                         if 0<=I<m and 0<=J<n:
-                            dp[i][j][movesCount] = (dp[I][J][movesCount-1]+dp[i][j][movesCount])%MOD 
+                            dp[i][j][movesCount] += dp[I][J][movesCount-1]
+                            if dp[i][j][movesCount]>=MOD:
+                                dp[i][j][movesCount]-=MOD 
         ans= 0
         for i in range(1,maxMove+1):
-            ans = (ans+dp[startRow][startColumn][i])%MOD
-        
+            ans += dp[startRow][startColumn][i]
+            if ans>=MOD:
+                ans -= MOD
         return ans
             

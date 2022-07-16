@@ -3,12 +3,12 @@ class Solution:
         
         N = len(stones)
         
-#         N - v(k-1) = 1
         pref = [0]
         for num in stones:
             pref.append(pref[-1]+num)
         def getSum(i,j):
             return pref[j+1]-pref[i]
+#         N - v(k-1) = 1
         if (N-1)%(k-1)==0:
             @cache
             def solve(i,j,piles):
@@ -21,8 +21,9 @@ class Solution:
                 else:
                     if piles==1:
                         temp = solve(i,j,k)
-                        if temp!=inf:
-                            ans = temp + getSum(i,j)
+                        # if temp!=inf:
+                        #     ans = 
+                        return temp + getSum(i,j)
                     else:
                         for end in range(i,j):
                             l = solve(i,end,1)

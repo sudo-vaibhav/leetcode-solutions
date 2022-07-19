@@ -2,6 +2,7 @@ class Solution:
     def countSubstrings(self, s: str, t: str) -> int:
         m,n = len(s),len(t)
         oneOff,allEql = 0,1
+        @cache
         def solve(i,j):
             if i<0 or j<0:
                 return (0,0)

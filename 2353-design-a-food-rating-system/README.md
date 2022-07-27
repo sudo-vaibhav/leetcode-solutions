@@ -1,4 +1,4 @@
-
+# Food Rating System
 <ul>
 	<li><strong>Modify</strong> the rating of a food item listed in the system.</li>
 	<li>Return the highest-rated food item for a type of cuisine in the system.</li>

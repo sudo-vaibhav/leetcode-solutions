@@ -1,12 +1,12 @@
 class Solution:
     def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
-        base = 26
+        base,a = 26,ord("a")
         MOD = 2**63-1
         def getAlloc(s):
-            ans,c,alloc = 0,0,{}
+            ans,c,alloc = 0,0,[None]*26
             for i in s:
-                ans = (ans*base)%MOD
-                if i not in alloc:
+                ans,i = (ans*base)%MOD,ord(i)-a
+                if alloc[i]==None:
                     alloc[i]=c
                     c+=1
                 ans += alloc[i]

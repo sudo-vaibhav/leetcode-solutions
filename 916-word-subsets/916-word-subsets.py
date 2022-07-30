@@ -8,16 +8,16 @@ class Solution:
                 mc[c] = max(mc[c],temp[k])
         ans=[]
         #print(mc)
+        def solve(w):
+            temp=Counter(w)
+            for idx,i in enumerate(mc):
+                k = chr(idx+ord("a")) 
+                if k not in temp:
+                    temp[k]=0
+                if temp[k]<i:
+                    return False
+            return True
         for w in words1:
-            def solve(w):
-                temp=Counter(w)
-                for idx,i in enumerate(mc):
-                    k = chr(idx+ord("a")) 
-                    if k not in temp:
-                        temp[k]=0
-                    if temp[k]<i:
-                        return False
-                return True
             if solve(w):
                 ans.append(w)
         

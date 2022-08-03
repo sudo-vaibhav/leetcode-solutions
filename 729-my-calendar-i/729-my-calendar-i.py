@@ -2,19 +2,15 @@ from sortedcontainers import SortedSet
 class MyCalendar:
 
     def __init__(self):
-        self.ss = SortedSet()        
-
+        self.ss = [] #SortedSet()        
     def book(self, start: int, end: int) -> bool:
         end-=1
         for s,e in self.ss:
-            if start<=s<=e<=end:
-#                 full overlap
+            if (start<=s<=e<=end) or (s<=start<=end<=e): # full overlap
                 return False
-            if s<=start<=end<=e:
+            if s<=start<=e or s<=end<=e: # partial overlap
                 return False
-            if s<=start<=e or s<=end<=e:
-                return False
-        self.ss.add((start,end))
+        self.ss.append((start,end)) # no overlap, so add
         return True
         
 

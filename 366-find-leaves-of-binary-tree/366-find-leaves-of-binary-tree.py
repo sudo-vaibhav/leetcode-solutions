@@ -6,9 +6,7 @@
 #         self.right = right
 class Solution:
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        
         ans = defaultdict(list)
-        
         def lvr(node):
             if not node:return 0
             v = max(lvr(node.left),lvr(node.right))

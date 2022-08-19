@@ -21,19 +21,36 @@ class Solution:
     # 7=> {4:[4],5:[3]}
     # 8=> {5:[3,5]}
 
-        d = defaultdict(list)
+    # O(nlogn) time and O(n) space soln
+#         d = defaultdict(list)
+#         for num in nums:
+#             prev = num-1
 
+#             if d[prev]:
+#                 prevLen = heappop(d[prev])
+#                 heappush(d[num],prevLen+1)
+#             else:
+#                 heappush(d[num],1)
+#         for k in d:
+#             for v in d[k]:
+#                 if v<3:
+#                     return False
+#         return True
+
+#     O(n) time and O(n) space soln
+        subseq = defaultdict(int)
+        freq = Counter(nums)
         for num in nums:
-            prev = num-1
-
-            if d[prev]:
-                prevLen = heappop(d[prev])
-                heappush(d[num],prevLen+1)
+            if freq[num]==0:continue
+            if subseq[num-1]>0:
+                subseq[num-1]-=1
+                subseq[num]+=1
+            elif freq[num+1] and freq[num+2]:
+                subseq[num+2]+=1
+                freq[num+1]-=1
+                freq[num+2]-=1
             else:
-                heappush(d[num],1)
-        for k in d:
-            for v in d[k]:
-                if v<3:
-                    return False
-        # print(d)
+                return False
+            freq[num]-=1
+        
         return True

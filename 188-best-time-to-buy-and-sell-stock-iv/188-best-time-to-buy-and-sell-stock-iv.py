@@ -20,12 +20,21 @@ class Solution:
         
 #         return globalMax[k,N-1]
 
-        min_price = [inf] * (k + 1)
-        max_profit = [0] * (k + 1)
+#         min_price = [inf] * (k + 1)
+#         max_profit = [0] * (k + 1)
         
-        for price in prices:
-            for i in range(1, k + 1):
-                min_price[i] = min(min_price[i], price - max_profit[i-1])
-                max_profit[i] = max(max_profit[i], price - min_price[i])
+#         for price in prices:
+#             for i in range(1, k + 1):
+#                 min_price[i] = min(min_price[i], price - max_profit[i-1])
+#                 max_profit[i] = max(max_profit[i], price - min_price[i])
 
-        return max_profit[k]
+#         return max_profit[k]
+        N = len(prices)
+        @cache
+        def solve(i,k,currentlyBought):
+            if i==N or k==0:return 0
+            ans = solve(i+1,k,currentlyBought)
+            if currentlyBought: ans = max(ans,solve(i+1,k-1,False)+prices[i])
+            else: ans = max(ans,solve(i+1,k,True)-prices[i])
+            return ans
+        return solve(0,k,False)

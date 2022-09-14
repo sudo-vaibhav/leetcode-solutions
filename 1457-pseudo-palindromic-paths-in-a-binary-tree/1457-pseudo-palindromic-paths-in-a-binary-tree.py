@@ -8,12 +8,12 @@ class Solution:
     def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
         self.res = 0
         def traverse(root,digitMask=0):
-            if not root:return
+            # if not root:return
             digitMask ^= 1<<root.val
             if not root.left and not root.right: self.res+=(digitMask&(digitMask-1)==0)
             else:
-                traverse(root.left,digitMask)
-                traverse(root.right,digitMask)
+                if root.left:traverse(root.left,digitMask)
+                if root.right:traverse(root.right,digitMask)
         traverse(root)
         return self.res
             

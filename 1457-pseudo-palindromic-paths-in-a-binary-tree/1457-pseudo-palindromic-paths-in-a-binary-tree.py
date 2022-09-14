@@ -6,22 +6,14 @@
 #         self.right = right
 class Solution:
     def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
-        res = 0
-        def onlyOneOddNum(counter):
-            ans = 0
-            for k in counter:
-                ans += counter[k]%2==1
-            return ans<=1
-        def traverse(root,ctr=defaultdict(int)):
-            nonlocal res
-            ctr[root.val]+=1
-            if not root.left and not root.right:
-                # print(ctr)
-                res+=onlyOneOddNum(ctr)
+        self.res = 0
+        def traverse(root,digitMask=0):
+            if not root:return
+            digitMask ^= 1<<root.val
+            if not root.left and not root.right: self.res+=(digitMask&(digitMask-1)==0)
             else:
-                if root.left: traverse(root.left,ctr)
-                if root.right: traverse(root.right,ctr)
-            ctr[root.val]-=1
+                traverse(root.left,digitMask)
+                traverse(root.right,digitMask)
         traverse(root)
-        return res
+        return self.res
             

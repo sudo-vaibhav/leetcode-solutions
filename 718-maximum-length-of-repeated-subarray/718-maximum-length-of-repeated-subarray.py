@@ -5,15 +5,20 @@ class Solution:
         ans = 0
         def getSets(ws,arr):
             q = deque()
-            i = 0
+            l,r = 0,0
             seen = set()
-            while i<len(arr):
-                if len(q)==ws:
-                    q.popleft()
-                q.append(arr[i])
-                i+=1
-                if len(q)==ws:
-                    seen.add(tuple(q))
+            rolling = 0
+            base = 102
+            mod = 2**63-1
+            while r<len(arr):
+                if r-l==ws:
+                    rolling -= arr[l]*(base**(ws-1))
+                    l+=1
+                rolling*=base
+                rolling+=arr[r]
+                r+=1
+                if r-l==ws:
+                    seen.add(rolling)
             return seen
         while l<=r:
             ws = l+(r-l)//2

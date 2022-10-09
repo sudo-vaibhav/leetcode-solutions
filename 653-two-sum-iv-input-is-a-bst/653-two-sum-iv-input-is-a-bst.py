@@ -14,20 +14,15 @@ class BSTIterator:
         while temp:
             self.st.append(temp)
             temp = temp.left if self.trav=="lvr" else temp.right
-        return node.val
-    # def hasNext(self) -> bool:
-    #     return self.st
 
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
         l,r = BSTIterator(root,"lvr"),BSTIterator(root,"rvl")      
         while True:
             L,R = l.peek(),r.peek()
-            if L>=R:
-                break
+            if L>=R:break
             temp = L+R
             if temp==k: return True
-            elif temp<k:l.next()
+            elif temp<k: l.next()
             else: r.next()
-                
         return False

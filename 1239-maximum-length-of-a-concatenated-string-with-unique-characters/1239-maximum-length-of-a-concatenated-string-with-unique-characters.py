@@ -2,7 +2,7 @@ class Solution:
     def maxLength(self, arr: List[str]) -> int:
         n = len(arr)
         
-        
+        @lru_cache(1000)
         def solve(i=0,used=0):
             if i==n:
                 return 0

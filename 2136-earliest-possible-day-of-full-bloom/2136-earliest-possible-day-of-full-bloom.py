@@ -6,7 +6,7 @@ class Solution:
         day = 0
         fin = 0
         for p,g in plants:
-            print(day,p,g)
+            # print(day,p,g)
             fin = max(fin,day+p+g)
             day+=p
         # print(day)

@@ -6,23 +6,17 @@ class WordDictionary:
 
     def addWord(self, word: str) -> None:
         temp = self.t
-        for c in word:
-            temp = temp[c]
+        for c in word: temp = temp[c]
         temp["word"]=True
 
     def search(self, word: str) -> bool:
-        n = len(word)
         def solve(i,root):
-            if i==n: return "word" in root
+            if i==len(word): return "word" in root
             c = word[i]
             if c==".":
-                for candidate in root:
-                    if candidate!="word":
-                        if solve(i+1,root[candidate]): return True
-                return False
-            else:
-                if c not in root: return False
-                return solve(i+1,root[c])
+                for key in root:
+                    if key!="word" and solve(i+1,root[key]): return True
+            return c in root and solve(i+1,root[c])
         return solve(0,self.t)
 
 

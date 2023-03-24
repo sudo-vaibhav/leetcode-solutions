@@ -9,8 +9,13 @@ class Solution:
             ans = 0
             for nex,dn in gph[node]:
                 if nex!=prev:
-                    if dn==True: ans+=1
+                    ans += dn==True
                     ans+=solve(nex,node)
             return ans
         
         return solve(0)
+    
+    
+    
+    
+    

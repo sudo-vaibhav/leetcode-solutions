@@ -4,8 +4,7 @@ class Solution:
         people.sort()
         while i<=j:
             if people[i]+people[j]<=limit:
-                i,j=i+1,j-1
-            else:
-                j-=1
+                i+=1
+            j-=1
             ans+=1
         return ans

@@ -1,0 +1,11 @@
+class Solution:
+    def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
+        w=set(words)
+        ans = []
+        n=len(text)
+        
+        for i in range(n):
+            for j in range(i,n):
+                if text[i:j+1] in w:
+                    ans.append((i,j))
+        return ans

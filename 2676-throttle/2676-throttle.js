@@ -8,25 +8,17 @@ var throttle = function(fn, t) {
   let timeout = null
   return function(...args) {
     let curTime = new Date().getTime()
+    clearTimeout(timeout)
     if (curTime>=nextRun){
         nextRun = curTime+t
-        clearTimeout(timeout)
-        // if(!timeout){
         fn(...args)
-            
-        // }
-        // timeout = setTimeout(()=>{
-        //     fn(...args)
-        // },t)
     }
     else{
-        if(timeout) clearTimeout(timeout)
         timeout = setTimeout(()=>{
             nextRun = new Date().getTime()+t
             fn(...args)
         },nextRun-curTime)
     }
-    // fn(...args)
   }
 };
 

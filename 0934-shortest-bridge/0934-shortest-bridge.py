@@ -21,7 +21,7 @@ class Solution:
                     seen.add((I,J))
                     q.append((I,J))
         
-        print(island1)
+        # print(island1)
         
         q = deque(island1)
         

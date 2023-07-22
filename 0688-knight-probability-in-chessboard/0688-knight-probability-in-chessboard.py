@@ -12,17 +12,17 @@ class Solution:
             (1,-2)
         ]
         
-        in_bounds = lambda coord: all(map(lambda pos : 0<=pos<n,coord))
+        is_in_bounds = lambda coord: all(map(lambda pos : 0<=pos<n,coord))
         
         @cache
-        def solve(i,j,moves):
-            if not in_bounds((i,j)): return 0
+        def count_possibilities(i,j,moves):
+            if not is_in_bounds((i,j)): return 0
             if moves==0: return 1
             ans = 0
             for di,dj in next_diffs:
                 I,J = i+di,j+dj
-                if in_bounds((I,J)):
-                    ans += solve(I,J,moves-1)  
+                if is_in_bounds((I,J)):
+                    ans += count_possibilities(I,J,moves-1)  
             return ans
-        
-        return solve(row,column,k)/8**k
+        total_possibilities = len(next_diffs)**k
+        return count_possibilities(row,column,k)/total_possibilities

@@ -1,9 +1,9 @@
 class Solution:
     def numOfArrays(self, n: int, m: int, k: int) -> int:
-        if n==1:
-            if k!=0:
-                return 0
-            return m
+        # if n==1:
+        #     if k!=0:
+        #         return 0
+        #     return m
         MOD = 10**9+7
         @cache
         def solve(i,deviations,prevMax):

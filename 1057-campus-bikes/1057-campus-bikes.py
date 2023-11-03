@@ -15,10 +15,13 @@ class Solution:
                 dists.append((dist,i,j))
         dists.sort()
         ans = [-1]*n
+        assigned = 0
         for entry in dists:
             dist,worker,bike = entry
             if worker not in assignedPeople and bike not in assignedBike:
                 ans[worker]=bike
                 assignedPeople.add(worker)
                 assignedBike.add(bike)
+                assigned+=1
+                if assigned==n:break
         return ans

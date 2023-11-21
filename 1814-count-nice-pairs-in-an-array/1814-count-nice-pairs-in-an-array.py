@@ -3,9 +3,9 @@ class Solution:
         @cache
         def rev(num:int):
             return int(str(num)[::-1])
-        MOD = 10**9+7
-        ans = 0
-        occs = defaultdict(int)
+        MOD,ans,occs = 10**9+7,0,defaultdict(int)
+        # ans = 0
+        # occs = defaultdict(int)
         for num in nums:
             temp = num-rev(num)#arr[j][1]
             ans += occs[temp]

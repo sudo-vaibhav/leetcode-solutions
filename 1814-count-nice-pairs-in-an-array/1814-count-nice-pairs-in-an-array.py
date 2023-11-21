@@ -4,7 +4,7 @@ class Solution:
             return int(str(num)[::-1])
         MOD = 10**9+7
         ans = 0
-        arr = list(map(lambda x:(x,rev(x)),nums))
+        # arr = list(map(lambda x:(x,rev(x)),nums))
         # x + rev(y) = y + rev(x)
         # x - rev(x) = y - rev(y)
         occs = defaultdict(int)

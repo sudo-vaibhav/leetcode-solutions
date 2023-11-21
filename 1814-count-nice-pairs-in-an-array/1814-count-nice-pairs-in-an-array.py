@@ -9,7 +9,7 @@ class Solution:
         # x - rev(x) = y - rev(y)
         occs = defaultdict(int)
         for j in range(len(nums)):
-            temp = arr[j][0]-arr[j][1]
+            temp = nums[j]-rev(nums[j])#arr[j][1]
             ans += occs[temp]
             if ans>=MOD:
                 ans-=MOD

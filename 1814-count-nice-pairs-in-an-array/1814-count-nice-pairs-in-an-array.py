@@ -10,6 +10,8 @@ class Solution:
         occs = defaultdict(int)
         for j in range(len(nums)):
             temp = arr[j][0]-arr[j][1]
-            ans = (ans+occs[temp])%MOD
+            ans += occs[temp]
+            if ans>=MOD:
+                ans-=MOD
             occs[temp]+=1
         return ans

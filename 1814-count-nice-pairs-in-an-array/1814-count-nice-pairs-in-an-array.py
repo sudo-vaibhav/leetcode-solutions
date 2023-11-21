@@ -4,9 +4,9 @@ class Solution:
         def rev(num:int):
             temp = 0
             while num>0:
-                temp *= 10
-                temp += num%10
-                num //= 10
+                temp,num = (temp*10)+num%10,num//10
+                # temp += num%10
+                # num //= 10
             return temp
             # return int(str(num)[::-1])
         MOD,ans,occs = 10**9+7,0,defaultdict(int)

@@ -1,5 +1,6 @@
 class Solution:
     def countNicePairs(self, nums: List[int]) -> int:
+        @cache
         def rev(num:int):
             return int(str(num)[::-1])
         MOD = 10**9+7

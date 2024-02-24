@@ -1,7 +1,6 @@
 class Solution:
     def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
-        know = set([0,firstPerson])
-        ctr = defaultdict(list)
+        timewise = defaultdict(list)
         
         
         class UF:
@@ -28,34 +27,23 @@ class Solution:
         meetings.sort(key=lambda x:x[-1])
         
         for *peeps,time in meetings:
-            ctr[time].append(peeps)
+            timewise[time].append(peeps)
         
-        for i in sorted(ctr.keys()):
+        for i in sorted(timewise.keys()):
             scoped_uf = UF()
-            for u,v in ctr[i]:
+            for u,v in timewise[i]:
                 scoped_uf.unite(u,v)
             toadd = set()
-            for u,v in ctr[i]:
+            for u,v in timewise[i]:
                 if overall.find(u)==0 or overall.find(v)==0:
                     toadd.add(scoped_uf.find(u))
                     toadd.add(scoped_uf.find(v))
-            for u,v in ctr[i]:
+            for u,v in timewise[i]:
                 if scoped_uf.find(u) in toadd:
                     overall.unite(u,0)
                 if scoped_uf.find(v) in toadd:
                     overall.unite(v,0)
-                
-            
-            
-#             for peeps in ctr[i]:
-                
-#                 if any(map(lambda x:find(x)==find(0),peeps)):
-#                     unite(*peeps)
-#             for peeps in ctr[i][::-1]:
-                
-#                 if any(map(lambda x:find(x)==find(0),peeps)):
-#                     unite(*peeps)
-                        
+             
         ans = []
         for i in range(n):
             if overall.find(0)==overall.find(i):

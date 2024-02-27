@@ -13,15 +13,15 @@
  */
 public class Solution {
     private int maximum;
-    public Solution(){
-        maximum = 0;
-    }
+    // public Solution(){
+    //     maximum = 0;
+    // }
     private int Solve(TreeNode node){
         if(node==null){
             return 0;
         }
-        var l = Solve(node.left);
-        var r = Solve(node.right);
+        int l = Solve(node.left);
+        int r = Solve(node.right);
         maximum = Math.Max(maximum,1+l+r);
         return 1+Math.Max(l,r);
     }

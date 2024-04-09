@@ -1,10 +1,8 @@
 class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
-        ans = 0
+        # ans = 0
         
-        for i in range(len(tickets)):
-            # if i<=k:
-            ans += min(tickets[k]-int(i>k),tickets[i])
-            # else:
-            #     ans += min(tickets[k]-1,tickets[i])
-        return ans
+        # for i in range(len(tickets)):
+        #     ans += 
+            
+        return sum(min(tickets[k]-int(i>k),tickets[i]) for i in range(len(tickets)))

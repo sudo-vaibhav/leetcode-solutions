@@ -3,8 +3,8 @@ class Solution:
         ans = 0
         
         for i in range(len(tickets)):
-            if i<=k:
-                ans += min(tickets[k],tickets[i])
-            else:
-                ans += min(tickets[k]-1,tickets[i])
+            # if i<=k:
+            ans += min(tickets[k]-(0 if i<=k else 1),tickets[i])
+            # else:
+            #     ans += min(tickets[k]-1,tickets[i])
         return ans
